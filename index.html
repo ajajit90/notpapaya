@@ -15,10 +15,8 @@
     --white: #ffffff;
     --black: #111111;
     --mid: #555550;
-    --light: #dde0db;
+    --light: #e8e8e4;
     --border: #e0e2dd;
-
-    /* Cool colour palette */
     --sage: #8fa898;
     --sage-light: #eef2ee;
     --sage-mid: #d4ddd6;
@@ -27,10 +25,6 @@
     --slate-mid: #c8d0e4;
     --grey-green: #7a8f84;
     --grey-green-light: #ecf0ed;
-
-    --accent: var(--slate);
-    --accent-light: var(--slate-light);
-
     --font-serif: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;
   }
@@ -93,8 +87,7 @@
     display: inline-flex; align-items: center; gap: 0.6rem;
     font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
     background: var(--black); color: var(--white);
-    padding: 0.85rem 2rem; text-decoration: none;
-    transition: background 0.2s;
+    padding: 0.85rem 2rem; text-decoration: none; transition: background 0.2s;
   }
   .btn-dark:hover { background: var(--slate); }
 
@@ -121,16 +114,10 @@
   .hero-stat:nth-child(2):hover { background: var(--sage-light); border-color: var(--sage-mid); }
   .hero-stat:nth-child(3):hover { background: var(--grey-green-light); border-color: var(--sage-mid); }
   .hero-stat:nth-child(4):hover { background: var(--slate-light); border-color: var(--slate-mid); }
-
   .hero-stat-number { font-family: var(--font-serif); font-size: 2.8rem; font-weight: 700; color: var(--black); line-height: 1; }
   .hero-stat-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); text-align: right; max-width: 160px; }
 
-  /* TICKER */
-  .ticker { background: var(--black); padding: 0.8rem 0; overflow: hidden; white-space: nowrap; }
-  .ticker-inner { display: inline-flex; animation: ticker 30s linear infinite; }
-  .ticker-item { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: #888; padding: 0 2rem; }
-  .ticker-dot { color: var(--sage); }
-  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
 
   /* SECTIONS */
   section { padding: 7rem 5rem; }
@@ -140,14 +127,14 @@
     display: flex; align-items: center; gap: 0.8rem;
   }
   .section-label::before { content: ''; width: 20px; height: 1px; background: var(--slate); }
-  .section-title { font-family: var(--font-serif); font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.15; margin-bottom: 4rem; color: var(--black); }
+  .section-title { font-family: var(--font-serif); font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.15; margin-bottom: 1rem; color: var(--black); }
+  .section-subtitle { font-size: 0.95rem; color: var(--mid); margin-bottom: 3rem; max-width: 500px; line-height: 1.7; }
 
   /* ABOUT */
   #about {
     background: var(--white); border-top: 1px solid var(--border);
     position: relative; overflow: hidden;
   }
-  /* Subtle sage wash top-right */
   #about::before {
     content: ''; position: absolute; top: 0; right: 0;
     width: 35%; height: 100%;
@@ -167,10 +154,7 @@
   .timeline-company { font-size: 0.82rem; color: var(--mid); margin-top: 0.2rem; }
 
   .about-right { display: flex; flex-direction: column; gap: 1px; }
-  .about-card {
-    padding: 2rem; border: 1px solid var(--border);
-    transition: background 0.25s, border-color 0.25s;
-  }
+  .about-card { padding: 2rem; border: 1px solid var(--border); transition: filter 0.2s; }
   .about-card:nth-child(1) { background: var(--slate-light); }
   .about-card:nth-child(2) { background: var(--sage-light); }
   .about-card:nth-child(3) { background: var(--grey-green-light); }
@@ -179,38 +163,72 @@
   .about-card-num { font-family: var(--font-serif); font-size: 3rem; font-weight: 700; color: var(--black); line-height: 1; }
   .about-card-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); margin-top: 0.4rem; }
 
-  /* WORK */
+  /* WORK — TWO TILES */
   #work { border-top: 1px solid var(--border); background: var(--bg); }
-  .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
-  .work-card {
-    background: var(--white); overflow: hidden;
-    transition: background 0.2s; text-decoration: none; display: block;
-  }
-  .work-card:nth-child(3n+1):hover { background: var(--slate-light); }
-  .work-card:nth-child(3n+2):hover { background: var(--sage-light); }
-  .work-card:nth-child(3n+3):hover { background: var(--grey-green-light); }
 
-  .work-card-image {
-    width: 100%; aspect-ratio: 4/3;
+  .work-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+
+  .work-tile {
+    position: relative; overflow: hidden;
+    text-decoration: none; display: block;
+    aspect-ratio: 4/3;
+    background: var(--white);
+    border: 1px solid var(--border);
+    transition: border-color 0.3s;
+  }
+  .work-tile:hover { border-color: var(--slate); }
+
+  /* Placeholder bg — replace with cover image later */
+  .work-tile-digital { background: linear-gradient(145deg, #dde8f0 0%, #c8d8e8 40%, #e2ecd6 100%); }
+  .work-tile-brand { background: linear-gradient(145deg, #e2ece4 0%, #c8d8cc 40%, #d8e4ec 100%); }
+
+  .work-tile::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 4px; z-index: 1;
+  }
+  .work-tile-digital::before { background: linear-gradient(to right, var(--slate), var(--sage)); }
+  .work-tile-brand::before { background: linear-gradient(to right, var(--grey-green), var(--slate)); }
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    display: block;
+  }
+
+  .work-tile-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(10,10,10,0.75) 0%, transparent 55%);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 2.5rem;
+    transition: background 0.3s;
+  }
+  .work-tile:hover .work-tile-overlay {
+    background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.1) 100%);
+  }
+
+  .work-tile-label {
+    font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: rgba(255,255,255,0.65); margin-bottom: 0.5rem;
+  }
+  .work-tile-title {
+    font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 700; color: var(--white); line-height: 1.15;
+  }
+  .work-tile-arrow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(255,255,255,0.65); margin-top: 1rem;
+    transition: gap 0.2s, color 0.2s;
+  }
+  .work-tile:hover .work-tile-arrow { gap: 0.9rem; color: var(--white); }
+
+  /* No cover image state — placeholder text */
+  .work-tile-placeholder {
+    position: absolute; inset: 0;
     display: flex; align-items: center; justify-content: center;
-    border-bottom: 1px solid var(--border); overflow: hidden; position: relative;
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--mid); opacity: 0.5;
   }
-  /* Subtle tinted placeholder backgrounds */
-  .work-card:nth-child(3n+1) .work-card-image { background: var(--slate-light); }
-  .work-card:nth-child(3n+2) .work-card-image { background: var(--sage-light); }
-  .work-card:nth-child(3n+3) .work-card-image { background: var(--grey-green-light); }
 
-  .work-card-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .work-placeholder { display: flex; flex-direction: column; align-items: center; gap: 0.8rem; position: absolute; }
-  .work-placeholder svg { width: 28px; height: 28px; stroke: var(--sage); }
-  .work-placeholder span { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); opacity: 0.6; }
-
-  .work-card-info { padding: 1.5rem 2rem 2rem; }
-  .work-card-tag { font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--slate); margin-bottom: 0.5rem; }
-  .work-card-title { font-family: var(--font-serif); font-size: 1.1rem; color: var(--black); line-height: 1.3; }
-  .work-card-sub { font-size: 0.78rem; color: var(--mid); margin-top: 0.3rem; }
-
-  .work-footer { display: flex; gap: 1.5rem; margin-top: 3.5rem; align-items: center; }
+  .work-footer { display: flex; gap: 1.5rem; margin-top: 3rem; align-items: center; }
 
   /* AWARDS */
   #awards {
@@ -264,7 +282,6 @@
     section { padding: 5rem 2.5rem; }
     #hero { grid-template-columns: 1fr; padding: 8rem 2.5rem 4rem; min-height: auto; }
     .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .work-grid { grid-template-columns: 1fr 1fr; }
     footer { padding: 1.5rem 2.5rem; }
   }
   @media (max-width: 600px) {
@@ -272,7 +289,7 @@
     .nav-links { gap: 1.5rem; }
     section { padding: 4rem 1.5rem; }
     #hero { padding: 7rem 1.5rem 3rem; }
-    .work-grid { grid-template-columns: 1fr; }
+    .work-tiles { grid-template-columns: 1fr; }
     .award-row { grid-template-columns: 70px 1fr; }
     .award-tag { display: none; }
     footer { flex-direction: column; gap: 0.8rem; text-align: center; }
@@ -285,7 +302,7 @@
   <a href="index.html" class="nav-logo">Ajit Kumar</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="work.html">Work</a></li>
+    <li><a href="#work">Work</a></li>
     <li><a href="#awards">Awards</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -299,7 +316,7 @@
       <strong>12+ years</strong> making brands impossible to ignore — from 30-second TV spots at top agencies to leading full-funnel digital strategy.
     </p>
     <div class="hero-cta">
-      <a href="work.html" class="btn-dark">View Work</a>
+      <a href="#work" class="btn-dark">View Work</a>
       <a href="#contact" class="btn-ghost">Get in Touch</a>
     </div>
   </div>
@@ -311,26 +328,7 @@
   </div>
 </section>
 
-<div class="ticker">
-  <div class="ticker-inner">
-    <span class="ticker-item">Scarecrow M&C Saatchi</span><span class="ticker-dot"> · </span>
-    <span class="ticker-item">Leo Burnett</span><span class="ticker-dot"> · </span>
-    <span class="ticker-item">Rediffusion</span><span class="ticker-dot"> · </span>
-    <span class="ticker-item">BOBCARD</span><span class="ticker-dot"> · </span>
-    <span class="ticker-item">Policybazaar</span><span class="ticker-dot"> · </span>
-    <span class="ticker-item">Intelegencia Digital</span><span class="ticker-dot"> · </span>
-    <span class="ticker-item">Gold CMO Asia Award</span><span class="ticker-dot"> · </span>
-    <span class="ticker-item">TV · Digital · Social · Strategy</span><span class="ticker-dot"> · </span>
-    <span class="ticker-item">Scarecrow M&C Saatchi</span><span class="ticker-dot"> · </span>
-    <span class="ticker-item">Leo Burnett</span><span class="ticker-dot"> · </span>
-    <span class="ticker-item">Rediffusion</span><span class="ticker-dot"> · </span>
-    <span class="ticker-item">BOBCARD</span><span class="ticker-dot"> · </span>
-    <span class="ticker-item">Policybazaar</span><span class="ticker-dot"> · </span>
-    <span class="ticker-item">Intelegencia Digital</span><span class="ticker-dot"> · </span>
-    <span class="ticker-item">Gold CMO Asia Award</span><span class="ticker-dot"> · </span>
-    <span class="ticker-item">TV · Digital · Social · Strategy</span><span class="ticker-dot"> · </span>
-  </div>
-</div>
+
 
 <section id="about">
   <div class="section-label">About</div>
@@ -359,43 +357,34 @@
   </div>
 </section>
 
+<!-- WORK -->
 <section id="work">
-  <div class="section-label">Selected Work</div>
-  <h2 class="section-title reveal">The Work</h2>
-  <div class="work-grid">
-    <a href="work.html" class="work-card reveal">
-      <div class="work-card-image"><img src="BOBCARD.png" alt="BOBCARD Launch Campaign"></div>
-      <div class="work-card-info">
-        <div class="work-card-tag">Social · Digital</div>
-        <div class="work-card-title">BOBCARD Launch Campaign</div>
-        <div class="work-card-sub">Digital campaign strategy & creative direction</div>
+  <div class="section-label">Work</div>
+  <h2 class="section-title reveal">What I've Made</h2>
+  <p class="section-subtitle reveal">Two decades of work across two very different worlds. Pick where you want to go.</p>
+
+  <div class="work-tiles reveal">
+
+    <!-- Digital Marketing Tile -->
+    <a href="work.html#digital" class="work-tile work-tile-digital">
+      <div class="work-tile-placeholder">Add cover image</div>
+      <div class="work-tile-overlay">
+        <div class="work-tile-label">Performance · SEO · Branding · ASO</div>
+        <div class="work-tile-title">Digital<br>Marketing</div>
+        <div class="work-tile-arrow">Explore work →</div>
       </div>
     </a>
-    <a href="work.html" class="work-card reveal">
-      <div class="work-card-image"><img src="policybazaar.png" alt="Policybazaar Digital Film"></div>
-      <div class="work-card-info">
-        <div class="work-card-tag">Digital Film · Award</div>
-        <div class="work-card-title">Policybazaar Digital Film</div>
-        <div class="work-card-sub">Gold CMO Asia Award winner</div>
+
+    <!-- Brand & Advertising Tile -->
+    <a href="work.html#brand" class="work-tile work-tile-brand">
+      <div class="work-tile-placeholder">Add cover image</div>
+      <div class="work-tile-overlay">
+        <div class="work-tile-label">TV · Radio · Film · Print · Pitch</div>
+        <div class="work-tile-title">Brand &<br>Advertising</div>
+        <div class="work-tile-arrow">Explore work →</div>
       </div>
     </a>
-    <a href="work.html" class="work-card reveal">
-      <div class="work-card-image">
-        <div class="work-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Upload Visual</span>
-        </div>
-      </div>
-      <div class="work-card-info">
-        <div class="work-card-tag">Ad Film · TV</div>
-        <div class="work-card-title">Compare Munafa Ad Film</div>
-        <div class="work-card-sub">Brand campaign concept & script</div>
-      </div>
-    </a>
-  </div>
-  <div class="work-footer reveal">
-    <a href="work.html" class="btn-dark">View All Work</a>
-    <a href="https://www.behance.net/ajajit" target="_blank" class="btn-ghost">Behance →</a>
+
   </div>
 </section>
 
