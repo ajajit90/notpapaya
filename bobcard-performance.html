@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOBCARD Performance Marketing — Ajit Kumar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #f7f8f6; --white: #fff; --black: #111;
+    --mid: #555550; --border: #e0e2dd;
+    --red: #8B0000; --red-light: #fff5f5;
+    --orange: #F26522; --orange-light: #fff3ee;
+    --slate: #6b7fa3; --slate-light: #edf0f7;
+    --font-serif: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--black); font-family: var(--font-body); font-weight: 300; line-height: 1.6; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.4rem 5rem;
+    background: rgba(247,248,246,0.96); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: var(--font-serif); font-size: 1.1rem; color: var(--black); text-decoration: none; }
+  .nav-back { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+  .nav-back:hover { color: var(--black); }
+
+  /* SLIDE STRUCTURE */
+  .slide { padding: 7rem 5rem; border-bottom: 1px solid var(--border); }
+  .slide:first-of-type { padding-top: 8rem; }
+  .slide-white { background: var(--white); }
+  .slide-bg { background: var(--bg); }
+  .slide-dark { background: #0d0d0d; }
+  .slide-red { background: linear-gradient(135deg, #1a0505 0%, var(--red) 60%, var(--orange) 100%); }
+
+  .slide-label {
+    font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 0.8rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .slide-label::before { content: ''; width: 16px; height: 1px; background: var(--orange); }
+  .slide-label-light { color: rgba(255,255,255,0.5); }
+  .slide-label-light::before { background: rgba(255,255,255,0.3); }
+
+  .slide-title {
+    font-family: var(--font-serif); font-size: clamp(1.8rem, 3.5vw, 3rem);
+    font-weight: 700; color: var(--black); line-height: 1.15; margin-bottom: 2.5rem;
+  }
+  .slide-title-light { color: var(--white); }
+
+  /* COVER SLIDE */
+  .cover-slide {
+    min-height: 60vh; display: flex; align-items: flex-end;
+    padding: 9rem 5rem 5rem;
+    background: linear-gradient(135deg, #1a0505 0%, #8B0000 55%, #F26522 100%);
+    position: relative; overflow: hidden;
+  }
+  .cover-slide::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.3); }
+  .cover-content { position: relative; z-index: 1; }
+  .cover-label { font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
+  .cover-title { font-family: var(--font-serif); font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 700; color: #fff; line-height: 1.1; max-width: 700px; margin-bottom: 2rem; }
+  .cover-meta { display: flex; gap: 3rem; flex-wrap: wrap; }
+  .cover-meta-item { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+  .cover-meta-item span { color: #fff; display: block; font-size: 1rem; font-weight: 500; margin-top: 0.3rem; letter-spacing: 0; text-transform: none; font-family: var(--font-serif); }
+
+  /* TWO COLUMN */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; background: var(--border); }
+  .two-col-asym { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
+
+  /* CARDS */
+  .card { background: var(--white); padding: 2rem; border: 1px solid var(--border); }
+  .card-dark { background: #1a1a1a; border-color: #2a2a2a; }
+  .card h4 { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; }
+  .card h4.teal { color: #0d9488; }
+  .card ul { padding-left: 1.2rem; }
+  .card li { font-size: 0.92rem; color: var(--mid); line-height: 1.8; margin-bottom: 0.4rem; }
+  .card p { font-size: 0.92rem; color: var(--mid); line-height: 1.8; }
+  .card-dark p, .card-dark li { color: #aaa; }
+
+  /* STATS ROW */
+  .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); margin-bottom: 3rem; }
+  .stat-box { background: var(--white); padding: 2.5rem 2rem; text-align: center; }
+  .stat-num { font-family: var(--font-serif); font-size: 3rem; font-weight: 700; color: var(--orange); line-height: 1; }
+  .stat-lbl { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); margin-top: 0.5rem; }
+
+  /* INTRO TEXT */
+  .intro-text { font-size: 1rem; color: var(--mid); line-height: 1.85; margin-bottom: 1.5rem; max-width: 680px; }
+  .intro-text strong { color: var(--black); font-weight: 500; }
+
+  /* BULLET LIST */
+  .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.5rem; }
+  .bullet-list li { display: flex; gap: 1rem; align-items: flex-start; font-size: 0.92rem; color: var(--mid); line-height: 1.7; }
+  .bullet-list li::before { content: '→'; color: var(--orange); flex-shrink: 0; font-weight: 500; margin-top: 0.05rem; }
+
+  /* PROCESS PYRAMID */
+  .pyramid { display: flex; flex-direction: column; gap: 2px; }
+  .pyramid-step {
+    display: grid; grid-template-columns: 50px 1fr; gap: 1.5rem;
+    background: var(--white); border: 1px solid var(--border);
+    padding: 1.2rem 1.5rem; align-items: center;
+    border-left: 3px solid var(--orange);
+  }
+  .pyramid-num { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; color: var(--orange); opacity: 0.5; }
+  .pyramid-text { font-size: 0.88rem; font-weight: 500; color: var(--black); }
+
+  /* AUDIENCE PROFILE */
+  .profile-box {
+    background: var(--white); border: 1px solid var(--border);
+    padding: 3rem; max-width: 580px; border-top: 3px solid var(--orange);
+  }
+  .profile-title { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.2rem; }
+  .profile-row { display: flex; gap: 1rem; padding: 0.8rem 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .profile-row:last-child { border-bottom: none; }
+  .profile-key { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); min-width: 120px; padding-top: 0.1rem; }
+  .profile-val { font-size: 0.9rem; color: var(--black); line-height: 1.5; }
+
+  /* AD IMAGE GRIDS */
+  .ad-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .ad-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 700px; }
+  .ad-item img { width: 100%; display: block; border-radius: 4px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+  .ad-caption { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-top: 0.6rem; text-align: center; }
+
+  /* SEARCH ADS */
+  .search-ad-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .search-ad-box { background: var(--white); border: 1px solid #e0e0e0; padding: 1.2rem; border-radius: 4px; }
+  .search-ad-label { font-size: 0.65rem; color: #666; margin-bottom: 0.5rem; }
+  .search-ad-brand { display: flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; color: #333; margin-bottom: 0.3rem; }
+  .search-ad-brand-dot { width: 16px; height: 16px; background: var(--orange); border-radius: 50%; }
+  .search-ad-title { font-size: 0.9rem; color: #1a0dab; font-weight: 500; line-height: 1.3; margin-bottom: 0.4rem; }
+  .search-ad-body { font-size: 0.75rem; color: #555; line-height: 1.5; }
+
+  /* OPTIMISATION POINTS */
+  .opt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); }
+  .opt-card { background: var(--white); padding: 2rem; }
+  .opt-card h4 { font-size: 0.85rem; font-weight: 500; color: var(--black); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.6rem; }
+  .opt-card h4::before { content: ''; width: 8px; height: 8px; background: var(--orange); border-radius: 50%; flex-shrink: 0; }
+  .opt-card p { font-size: 0.85rem; color: var(--mid); line-height: 1.7; }
+
+  /* HIGHLIGHTS */
+  .highlight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .highlight-item { display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.5rem; background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--orange); }
+  .highlight-arrow { font-size: 2rem; color: var(--orange); line-height: 1; }
+  .highlight-text h4 { font-size: 0.88rem; font-weight: 500; color: var(--black); margin-bottom: 0.3rem; }
+  .highlight-text p { font-size: 0.82rem; color: var(--mid); line-height: 1.6; }
+
+  /* RESULTS */
+  .results-big { display: flex; gap: 5rem; align-items: center; flex-wrap: wrap; margin-bottom: 3rem; }
+  .result-big-num { font-family: var(--font-serif); font-size: clamp(4rem, 8vw, 7rem); font-weight: 700; color: var(--orange); line-height: 1; }
+  .result-big-label { font-size: 0.85rem; font-weight: 500; color: var(--black); margin-top: 0.3rem; }
+  .result-big-sub { font-size: 0.75rem; color: var(--mid); }
+
+  /* TAKEAWAY */
+  .takeaway-slide { background: var(--black); padding: 7rem 5rem; text-align: center; }
+  .takeaway-label { font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1.5rem; }
+  .takeaway-quote { font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3.2rem); color: var(--white); line-height: 1.3; max-width: 750px; margin: 0 auto; }
+  .takeaway-quote em { color: var(--orange); font-style: normal; }
+
+  /* FOOTER */
+  footer { padding: 2rem 5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--white); }
+  footer p { font-size: 0.68rem; color: var(--mid); }
+  footer a { color: var(--mid); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+  footer a:hover { color: var(--black); }
+
+  /* DIVIDER */
+  .divider { height: 1px; background: var(--border); margin: 2.5rem 0; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 2rem; }
+    .slide { padding: 5rem 2rem; }
+    .cover-slide { padding: 8rem 2rem 4rem; }
+    .two-col, .two-col-asym, .opt-grid, .highlight-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .three-col, .ad-grid-3, .search-ad-grid { grid-template-columns: 1fr 1fr; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    footer { padding: 1.5rem 2rem; flex-direction: column; gap: 1rem; }
+  }
+  @media (max-width: 600px) {
+    .three-col, .ad-grid-3, .search-ad-grid, .ad-grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Ajit Kumar</a>
+  <a href="work.html#digital" class="nav-back">← Back to Work</a>
+</nav>
+
+<!-- SLIDE 1: COVER -->
+<div class="cover-slide">
+  <div class="cover-content">
+    <div class="cover-label">Performance Marketing · Case Study · BOBCARD</div>
+    <h1 class="cover-title">Increasing Credit Card Acquisition Through Performance Marketing</h1>
+    <div class="cover-meta">
+      <div class="cover-meta-item">Client<span>BOBCARD</span></div>
+      <div class="cover-meta-item">Duration<span>10 Months</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 2: CHALLENGES & OBJECTIVE -->
+<div class="slide slide-white">
+  <div class="slide-label">The Brief</div>
+  <h2 class="slide-title">Challenges & Objective</h2>
+  <div class="two-col">
+    <div class="card">
+      <h4>Challenges</h4>
+      <ul>
+        <li>High initial Cost Per Conversion — Card Acquisition Cost (CAC) over ₹5,000</li>
+        <li>Limited growth in online acquisition channels</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Our Objective</h4>
+      <ul>
+        <li>Reduce CAC and increase brand & product awareness</li>
+        <li>Expand and optimise online acquisition channels</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 3: OUR APPROACH — CHANNEL MIX -->
+<div class="slide slide-bg">
+  <div class="slide-label">Our Approach</div>
+  <h2 class="slide-title">Multi-Channel Strategy</h2>
+  <div class="two-col-asym">
+    <div>
+      <p class="intro-text">Our campaign strategy utilised a <strong>multi-channel approach</strong>, custom campaigns and various advertising platforms to maximise reach and efficiency.</p>
+      <ul class="bullet-list">
+        <li><strong>Google Ads</strong> with both brand and non-brand keywords</li>
+        <li><strong>Performance Max (PMax)</strong> with customised campaigns</li>
+        <li><strong>Meta Ads</strong> (Facebook and Instagram) targeted as per the interest and likeness of the audience</li>
+        <li><strong>Online Reputation Management (ORM)</strong> to monitor and manage brand perception</li>
+      </ul>
+    </div>
+    <div>
+      <div style="background: var(--white); border: 1px solid var(--border); padding: 2rem;">
+        <h4 style="font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--orange); margin-bottom:1.2rem;">Channel Mix</h4>
+        <div style="display:flex; flex-direction:column; gap:0.8rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
+            <span style="color:var(--black); font-weight:500;">Search Ads</span>
+            <div style="flex:1; margin:0 1rem; height:8px; background:var(--border); border-radius:4px; overflow:hidden;"><div style="width:45%; height:100%; background:var(--orange);"></div></div>
+            <span style="color:var(--mid); font-size:0.75rem;">Primary</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
+            <span style="color:var(--black); font-weight:500;">Performance Max & Display</span>
+            <div style="flex:1; margin:0 1rem; height:8px; background:var(--border); border-radius:4px; overflow:hidden;"><div style="width:35%; height:100%; background:#e8541a;"></div></div>
+            <span style="color:var(--mid); font-size:0.75rem;">Secondary</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
+            <span style="color:var(--black); font-weight:500;">Meta Ads + LinkedIn</span>
+            <div style="flex:1; margin:0 1rem; height:8px; background:var(--border); border-radius:4px; overflow:hidden;"><div style="width:20%; height:100%; background:#8B4513;"></div></div>
+            <span style="color:var(--mid); font-size:0.75rem;">Support</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4: OUR APPROACH — DATA & LISTENING -->
+<div class="slide slide-white">
+  <div class="slide-label">Our Approach</div>
+  <h2 class="slide-title">Data-Led Audience Intelligence</h2>
+  <div class="two-col">
+    <div class="card">
+      <h4>First-Party Data Integration</h4>
+      <p>We integrated first-party data into the user journey to ensure smooth audience traffic flow and accurate conversion tracking.</p>
+    </div>
+    <div class="card">
+      <h4>Social Listening</h4>
+      <p>Through social listening, we monitored over <strong style="color:var(--black)">15,000+ mentions and engagements</strong> to establish brand sentiment and created <strong style="color:var(--black)">10+ audience profiles</strong> to understand which product fits which audience.</p>
+    </div>
+    <div class="card">
+      <h4>Campaign Customisation</h4>
+      <p>Campaigns were customised as per the audience set and matched with product features and offerings for maximum relevance.</p>
+    </div>
+    <div class="card">
+      <h4>Distribution Channel Selection</h4>
+      <p>Carefully selected distribution channels to ensure the right message reached the right audience at the right time.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5: CAMPAIGN EXECUTION — PROCESS -->
+<div class="slide slide-bg">
+  <div class="slide-label">Campaign Execution</div>
+  <h2 class="slide-title">The Process</h2>
+  <div class="two-col-asym">
+    <div>
+      <div class="pyramid">
+        <div class="pyramid-step"><div class="pyramid-num">01</div><div class="pyramid-text">Product Understanding — thoroughly understanding the products and their offerings</div></div>
+        <div class="pyramid-step"><div class="pyramid-num">02</div><div class="pyramid-text">TG Understanding — identifying target groups that best match the product offerings</div></div>
+        <div class="pyramid-step"><div class="pyramid-num">03</div><div class="pyramid-text">Social Listening — monitoring 15,000+ social channels via Locobuzz</div></div>
+        <div class="pyramid-step"><div class="pyramid-num">04</div><div class="pyramid-text">Audience Segmentation — distinct segments matched with the most suitable credit cards</div></div>
+        <div class="pyramid-step"><div class="pyramid-num">05</div><div class="pyramid-text">Customised Campaign — leveraging data to craft tailored campaigns including topical ones</div></div>
+        <div class="pyramid-step"><div class="pyramid-num">06</div><div class="pyramid-text">Distribution Channel Selection — strategically chosen to keep ads relevant to the audience</div></div>
+        <div class="pyramid-step"><div class="pyramid-num">07</div><div class="pyramid-text">Continuous Optimisation — continually optimising campaigns based on learnings</div></div>
+      </div>
+    </div>
+    <div style="background:var(--white); border:1px solid var(--border); padding:2.5rem;">
+      <h4 style="font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--orange); margin-bottom:1.5rem;">Why This Worked</h4>
+      <p style="font-size:0.9rem; color:var(--mid); line-height:1.85;">A structured 7-step process ensured no step was skipped — from deep product knowledge to real-time optimisation. Every campaign decision was backed by data, not assumption.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6: AUDIENCE PROFILE -->
+<div class="slide slide-white">
+  <div class="slide-label">Campaign Execution</div>
+  <h2 class="slide-title">Audience Profile — Use Case</h2>
+  <div class="profile-box">
+    <div class="profile-title">Sample Audience Profile</div>
+    <div class="profile-row"><span class="profile-key">Gender & Age</span><span class="profile-val">Male, 30–45 years of age</span></div>
+    <div class="profile-row"><span class="profile-key">Location</span><span class="profile-val">Urban areas</span></div>
+    <div class="profile-row"><span class="profile-key">Interests</span><span class="profile-val">Movies, Food, Shopping, Travel</span></div>
+    <div class="profile-row"><span class="profile-key">Job Type</span><span class="profile-val">Middle Management, salary range ₹10–18 lakh</span></div>
+    <div class="profile-row"><span class="profile-key">Matched Cards</span><span class="profile-val">BOBCARD Eterna · Energie BOBCARD · BOBCARD Premier</span></div>
+  </div>
+</div>
+
+<!-- SLIDE 7: BOBCARD ETERNA ADS -->
+<div class="slide slide-bg">
+  <div class="slide-label">Campaign Creatives</div>
+  <h2 class="slide-title">For BOBCARD Eterna</h2>
+  <div class="ad-grid-3">
+    <div class="ad-item">
+      <img src="ad-eterna-lounge.png" alt="BOBCARD Eterna — Relax and unwind without limit">
+      <div class="ad-caption">Unlimited Airport Lounge Access</div>
+    </div>
+    <div class="ad-item">
+      <img src="ad-eterna-movies.png" alt="BOBCARD Eterna — Lights Camera Action Rewards">
+      <div class="ad-caption">Movie Rewards</div>
+    </div>
+    <div class="ad-item">
+      <img src="ad-eterna-fitness.png" alt="BOBCARD Eterna — Get fitness as a reward">
+      <div class="ad-caption">Fitness Rewards</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 8: DEFENCE PERSONNEL -->
+<div class="slide slide-white">
+  <div class="slide-label">Campaign Creatives</div>
+  <h2 class="slide-title">Campaign Customised for Defence Personnel</h2>
+  <div class="ad-grid-2">
+    <div class="ad-item">
+      <img src="ad-defence-yoddha.png" alt="Indian Army Yoddha BoB Credit Card">
+      <div class="ad-caption">Indian Army — Yoddha Card</div>
+    </div>
+    <div class="ad-item">
+      <img src="ad-defence-varunah.png" alt="BoB Varunah Credit Card — Indian Navy">
+      <div class="ad-caption">Indian Navy — Varunah Card</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 9: REGIONAL CUSTOMISATION -->
+<div class="slide slide-bg">
+  <div class="slide-label">Campaign Creatives</div>
+  <h2 class="slide-title">Regional Customisation</h2>
+  <div class="ad-grid-3">
+    <div class="ad-item">
+      <img src="ad-regional-1.png" alt="Regional variant — Gujarati">
+      <div class="ad-caption">Gujarati</div>
+    </div>
+    <div class="ad-item">
+      <img src="ad-regional-2.png" alt="Regional variant — Hindi">
+      <div class="ad-caption">Hindi</div>
+    </div>
+    <div class="ad-item">
+      <img src="ad-regional-3.png" alt="Regional variant — English">
+      <div class="ad-caption">English</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 10: RUPAY UPI -->
+<div class="slide slide-white">
+  <div class="slide-label">Campaign Creatives</div>
+  <h2 class="slide-title">Campaign for RuPay UPI</h2>
+  <div class="ad-grid-3">
+    <div class="ad-item">
+      <img src="ad-rupay-1.png" alt="BOBCARD on UPI — Ultimate Payment Convenience">
+      <div class="ad-caption">UPI Payment Convenience</div>
+    </div>
+    <div class="ad-item">
+      <img src="ad-rupay-2.png" alt="BOBCARD on UPI — Everyday transactions">
+      <div class="ad-caption">Everyday Transactions</div>
+    </div>
+    <div class="ad-item">
+      <img src="ad-rupay-3.png" alt="BOBCARD on UPI — Get More Do More">
+      <div class="ad-caption">Get More, Do More</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 11: SEARCH ADS -->
+<div class="slide slide-bg">
+  <div class="slide-label">Campaign Execution</div>
+  <h2 class="slide-title">Search Ads</h2>
+  <div class="search-ad-grid">
+    <div class="search-ad-box">
+      <div class="search-ad-label">Sponsored</div>
+      <div class="search-ad-brand"><div class="search-ad-brand-dot"></div>BOBCARD · cardonline.bobfinancial.com</div>
+      <div class="search-ad-title">Shop with RuPay BOBCARD on UPI — BOBCARD UPI — Get Rewards</div>
+      <div class="search-ad-body">Effortless Payments for All Your Needs with BOBCARD on UPI. #AurKyaChahiye. Apply Today. IRCTC Credit card, Varunah Credit card, Fast & Easy Application...</div>
+    </div>
+    <div class="search-ad-box">
+      <div class="search-ad-label">Sponsored</div>
+      <div class="search-ad-brand"><div class="search-ad-brand-dot"></div>BOBCARD · cardonline.bobfinancial.com</div>
+      <div class="search-ad-title">Hit Boundaries with Rewards — Sixer Deals on Credit Cards</div>
+      <div class="search-ad-body">Catch 5X Rewards, Exclusive Offers & More With BOBCARD. Play For High Rewards and Exclusive offers with BOBCARD. Fast & Easy Application, Check Benefits & Apply...</div>
+    </div>
+    <div class="search-ad-box">
+      <div class="search-ad-label">Sponsored</div>
+      <div class="search-ad-brand"><div class="search-ad-brand-dot"></div>BOBCARD · cardonline.bobfinancial.com/credit_card</div>
+      <div class="search-ad-title">BOBCARD Easy For UPI Payments | 5X Reward + UPI Payment</div>
+      <div class="search-ad-body">Enjoy Shopping On UPI, Rewards & Zero Annual & Joining Fees With BOBCARD Easy. UPI Payment, 5X Rewards & More. Enjoy Zero Annual & Joining Fees with...</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 12: CAMPAIGN OPTIMISATION -->
+<div class="slide slide-white">
+  <div class="slide-label">Campaign Sustenance</div>
+  <h2 class="slide-title">Optimisation Strategy</h2>
+  <div class="opt-grid">
+    <div class="opt-card">
+      <h4>Keyword Performance Analysis</h4>
+      <p>Regularly analysed keyword performance to identify high-converting keywords and added negative keywords to filter out irrelevant traffic.</p>
+    </div>
+    <div class="opt-card">
+      <h4>Creative Refresh</h4>
+      <p>Creative and communication revamp based on creative fatigue reports. Brand campaigns ensured continued awareness and brand following.</p>
+    </div>
+    <div class="opt-card">
+      <h4>Product-Specific Campaigns</h4>
+      <p>Created individual campaigns tailored to each card product — highlighting airport lounge access, reward points, and unique features to attract the right audience.</p>
+    </div>
+    <div class="opt-card">
+      <h4>Feature-Specific Targeting</h4>
+      <p>Targeted ads based on key card features, delivering ads to the right audience at the right time — enhancing relevance and campaign effectiveness.</p>
+    </div>
+    <div class="opt-card">
+      <h4>Google Ad Customisation</h4>
+      <p>Launched dedicated campaigns for In-market and Custom segments. In-market segments targeted active searchers; Custom segments were tailored to unique profiles identified via social listening.</p>
+    </div>
+    <div class="opt-card">
+      <h4>Continuous Learning Loop</h4>
+      <p>Every campaign iteration fed back into the strategy — audience signals, creative performance, and channel data continuously refined the approach.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 13: CAMPAIGN HIGHLIGHTS -->
+<div class="slide slide-bg">
+  <div class="slide-label">Campaign Highlights</div>
+  <h2 class="slide-title">What Moved the Needle</h2>
+  <div class="highlight-grid">
+    <div class="highlight-item">
+      <div class="highlight-arrow">↓</div>
+      <div class="highlight-text">
+        <h4>Drop in Acquisition Cost</h4>
+        <p>Significant drop in CAC within the first six months of campaign launch through multi-channel optimisation.</p>
+      </div>
+    </div>
+    <div class="highlight-item">
+      <div class="highlight-arrow" style="color:var(--orange)">↑</div>
+      <div class="highlight-text">
+        <h4>Positive Brand Sentiment</h4>
+        <p>Customisation of campaign communication led to measurable improvement in brand sentiment and affinity.</p>
+      </div>
+    </div>
+    <div class="highlight-item">
+      <div class="highlight-arrow">↓</div>
+      <div class="highlight-text">
+        <h4>Reduced CTR Waste</h4>
+        <p>Negative keyword strategy and audience refinement reduced irrelevant clicks, improving campaign efficiency.</p>
+      </div>
+    </div>
+    <div class="highlight-item">
+      <div class="highlight-arrow" style="color:var(--orange)">↑</div>
+      <div class="highlight-text">
+        <h4>High Impressions per Campaign</h4>
+        <p>Rising impressions trajectory from August to December 2023 — brand visibility grew consistently month on month.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 14: CAMPAIGN RESULTS -->
+<div class="slide slide-white">
+  <div class="slide-label">The Outcome</div>
+  <h2 class="slide-title">Campaign Results</h2>
+  <div class="results-big">
+    <div>
+      <div class="result-big-num">68%</div>
+      <div class="result-big-label">Reduction in Card Acquisition Cost</div>
+      <div class="result-big-sub">From ₹5,000+ CAC to significantly lower</div>
+    </div>
+    <div>
+      <div class="result-big-num">58%</div>
+      <div class="result-big-label">Rise in Brand Awareness</div>
+      <div class="result-big-sub">Measured via impressions & social listening</div>
+    </div>
+    <div>
+      <div class="result-big-num">800</div>
+      <div class="result-big-label">Cards per Month (avg.)</div>
+      <div class="result-big-sub">Overall campaign average</div>
+    </div>
+  </div>
+  <div style="background:var(--bg); border:1px solid var(--border); padding:2rem; border-left:3px solid var(--orange);">
+    <h4 style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--orange); margin-bottom:1rem;">Total Approved Cards — Growth Trajectory</h4>
+    <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--border);">
+      <div style="background:var(--white); padding:1.2rem; text-align:center;">
+        <div style="font-family:var(--font-serif); font-size:1.4rem; font-weight:700; color:var(--mid);">19</div>
+        <div style="font-size:0.65rem; color:var(--mid); margin-top:0.3rem;">Aug '23</div>
+      </div>
+      <div style="background:var(--white); padding:1.2rem; text-align:center;">
+        <div style="font-family:var(--font-serif); font-size:1.4rem; font-weight:700; color:var(--mid);">691</div>
+        <div style="font-size:0.65rem; color:var(--mid); margin-top:0.3rem;">Aug–Sep '23</div>
+      </div>
+      <div style="background:var(--white); padding:1.2rem; text-align:center;">
+        <div style="font-family:var(--font-serif); font-size:1.4rem; font-weight:700; color:var(--mid);">2,207</div>
+        <div style="font-size:0.65rem; color:var(--mid); margin-top:0.3rem;">Aug–Oct '23</div>
+      </div>
+      <div style="background:var(--white); padding:1.2rem; text-align:center;">
+        <div style="font-family:var(--font-serif); font-size:1.4rem; font-weight:700; color:var(--orange);">4,622</div>
+        <div style="font-size:0.65rem; color:var(--mid); margin-top:0.3rem;">Aug–Nov '23</div>
+      </div>
+      <div style="background:var(--white); padding:1.2rem; text-align:center;">
+        <div style="font-family:var(--font-serif); font-size:1.8rem; font-weight:700; color:var(--orange);">8,525</div>
+        <div style="font-size:0.65rem; color:var(--mid); margin-top:0.3rem;">Aug–Dec '23</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAKEAWAY -->
+<div class="takeaway-slide">
+  <div class="takeaway-label">Takeaway</div>
+  <div class="takeaway-quote">The right audience, the right message, the right channel — <em>scaled from 19 cards to 8,525 in five months.</em></div>
+</div>
+
+<footer>
+  <p>© 2026 Ajit Kumar · notpapaya.com</p>
+  <a href="work.html#digital">← Back to Work</a>
+</footer>
+
+</body>
+</html>
