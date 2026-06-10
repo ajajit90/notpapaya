@@ -43,7 +43,6 @@
   .nav-links a { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover, .nav-links a.active { color: var(--black); }
 
-  /* PAGE HEADER */
   .page-header {
     padding: 10rem 5rem 4rem;
     background: linear-gradient(135deg, var(--slate-light) 0%, var(--sage-light) 60%, var(--bg) 100%);
@@ -55,7 +54,6 @@
   .page-header-title em { font-weight: 400; color: var(--mid); }
   .page-header-sub { font-size: 0.95rem; color: var(--mid); margin-top: 1.2rem; max-width: 480px; line-height: 1.7; }
 
-  /* SECTION BLOCKS */
   .work-section { padding: 5rem; }
   .work-section + .work-section { border-top: 2px solid var(--border); }
 
@@ -65,7 +63,6 @@
   .work-section-title { font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 700; color: var(--black); line-height: 1.1; }
   .work-section-sub { font-size: 0.88rem; color: var(--mid); margin-top: 0.5rem; }
 
-  /* CARD GRID */
   .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
 
   .work-card { background: var(--white); overflow: hidden; transition: background 0.2s; text-decoration: none; display: block; }
@@ -83,37 +80,34 @@
   .work-card:nth-child(3n+3) .work-card-image { background: var(--grey-green-light); }
   .work-card-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-  .work-card-video { width: 100%; aspect-ratio: 4/3; border-bottom: 1px solid var(--border); overflow: hidden; }
+  .work-card-video { width: 100%; aspect-ratio: 16/9; border-bottom: 1px solid var(--border); overflow: hidden; }
   .work-card-video iframe { width: 100%; height: 100%; display: block; }
 
   .work-placeholder { display: flex; flex-direction: column; align-items: center; gap: 0.8rem; position: absolute; }
   .work-placeholder svg { width: 28px; height: 28px; stroke: var(--sage); }
   .work-placeholder span { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); opacity: 0.6; }
 
-  .work-card-info { padding: 1.5rem 2rem 2rem; }
+  .work-card-info { padding: 1.5rem 2rem 1.5rem; }
   .work-card-tag { font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--slate); margin-bottom: 0.5rem; }
   .work-card-title { font-family: var(--font-serif); font-size: 1.1rem; color: var(--black); line-height: 1.3; }
   .work-card-sub { font-size: 0.78rem; color: var(--mid); margin-top: 0.3rem; line-height: 1.5; }
   .work-card-meta { display: flex; gap: 1.5rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
   .work-card-year, .work-card-role { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); }
 
-  /* AUDIO PLAYER */
-  .audio-list { padding: 1rem 2rem 1.5rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.8rem; }
+  .audio-list { padding: 0.8rem 2rem 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; border-top: 1px solid var(--border); }
   .audio-item { display: flex; flex-direction: column; gap: 0.3rem; }
   .audio-label { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid); }
   .audio-item audio { width: 100%; height: 32px; accent-color: var(--slate); }
 
-  /* PDF VIEWER */
   .pdf-link {
     display: inline-flex; align-items: center; gap: 0.5rem;
-    margin: 1rem 2rem 1.5rem;
+    margin: 0.5rem 2rem 1.5rem;
     font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
     color: var(--slate); text-decoration: none; border-bottom: 1px solid var(--slate-mid);
     padding-bottom: 0.2rem; transition: color 0.2s;
   }
   .pdf-link:hover { color: var(--black); }
 
-  /* BEHANCE CTA */
   .behance-cta {
     margin: 0 5rem 5rem; padding: 3rem 4rem;
     background: var(--black);
@@ -177,7 +171,6 @@
   <p class="page-header-sub">TV. Radio. Digital. Performance. Strategy. Twelve years of briefs, ideas, and campaigns that shipped.</p>
 </div>
 
-
 <!-- ================================ -->
 <!-- SECTION 1: DIGITAL MARKETING     -->
 <!-- ================================ -->
@@ -187,17 +180,10 @@
     <h2 class="work-section-title">Digital Marketing</h2>
     <p class="work-section-sub">Performance, branding, SEO, and app growth — work that moved numbers.</p>
   </div>
-
   <div class="work-grid">
 
-    <!-- Placeholder 1: Performance Marketing -->
     <div class="work-card reveal">
-      <div class="work-card-image">
-        <div class="work-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Upload Visual</span>
-        </div>
-      </div>
+      <div class="work-card-image"><div class="work-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Upload Visual</span></div></div>
       <div class="work-card-info">
         <div class="work-card-tag">Performance Marketing</div>
         <div class="work-card-title">Performance Marketing</div>
@@ -206,14 +192,8 @@
       </div>
     </div>
 
-    <!-- Placeholder 2: Branding Campaign -->
     <div class="work-card reveal">
-      <div class="work-card-image">
-        <div class="work-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Upload Visual</span>
-        </div>
-      </div>
+      <div class="work-card-image"><div class="work-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Upload Visual</span></div></div>
       <div class="work-card-info">
         <div class="work-card-tag">Branding Campaign</div>
         <div class="work-card-title">Branding Campaign</div>
@@ -222,14 +202,8 @@
       </div>
     </div>
 
-    <!-- Placeholder 3: SEO Growth -->
     <div class="work-card reveal">
-      <div class="work-card-image">
-        <div class="work-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Upload Visual</span>
-        </div>
-      </div>
+      <div class="work-card-image"><div class="work-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Upload Visual</span></div></div>
       <div class="work-card-info">
         <div class="work-card-tag">SEO Growth</div>
         <div class="work-card-title">SEO Growth</div>
@@ -238,14 +212,8 @@
       </div>
     </div>
 
-    <!-- Placeholder 4: App ASO -->
     <div class="work-card reveal">
-      <div class="work-card-image">
-        <div class="work-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Upload Visual</span>
-        </div>
-      </div>
+      <div class="work-card-image"><div class="work-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Upload Visual</span></div></div>
       <div class="work-card-info">
         <div class="work-card-tag">App ASO</div>
         <div class="work-card-title">App ASO</div>
@@ -257,7 +225,6 @@
   </div>
 </div>
 
-
 <!-- ================================ -->
 <!-- SECTION 2: BRAND & ADVERTISING   -->
 <!-- ================================ -->
@@ -267,7 +234,6 @@
     <h2 class="work-section-title">Brand & Advertising</h2>
     <p class="work-section-sub">TV films, radio spots, digital ads, and pitch work — ideas that started with a blank page.</p>
   </div>
-
   <div class="work-grid">
 
     <!-- BOBCARD -->
@@ -284,7 +250,7 @@
     <!-- Policybazaar -->
     <div class="work-card reveal">
       <div class="work-card-video">
-        <iframe src="https://www.youtube.com/embed/b5-VXuKJWco" title="Policybazaar Digital Film" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/x-SFnQiMcyQ" title="Policybazaar Ad Film" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="work-card-info">
         <div class="work-card-tag">Digital Film · Gold Award</div>
@@ -297,7 +263,7 @@
     <!-- L&T Realty -->
     <div class="work-card reveal">
       <div class="work-card-video">
-        <iframe src="https://drive.google.com/file/d/1d0dW_xcgGrWqaJAFWG0JNrIYuVKtwlx9/preview" title="L&T Realty Video Ad" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/naj-2yy1Xj8" title="L&T Realty Video Ad" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="work-card-info">
         <div class="work-card-tag">Video Ad · Radio · Real Estate</div>
@@ -306,21 +272,15 @@
         <div class="work-card-meta"><span class="work-card-role">Writer</span></div>
       </div>
       <div class="audio-list">
-        <div class="audio-item">
-          <span class="audio-label">Radio Spot 1</span>
-          <audio controls src="https://drive.google.com/uc?export=download&id=1qAxp5jExf5ApenKUedoZSP3IVvzqs8nK"></audio>
-        </div>
-        <div class="audio-item">
-          <span class="audio-label">Radio Spot 2</span>
-          <audio controls src="https://drive.google.com/uc?export=download&id=12flhsiCHAK6nh-zqBKsnyrY8J5ZhzZkT"></audio>
-        </div>
+        <div class="audio-item"><span class="audio-label">Baba — Radio Spot</span><audio controls src="Baba - L&T Realty Radio ad.mp3"></audio></div>
+        <div class="audio-item"><span class="audio-label">World Tour — Radio Spot</span><audio controls src="World Tour - L&T Realty Radio ad.mp3"></audio></div>
       </div>
     </div>
 
     <!-- CompareMunafa -->
     <div class="work-card reveal">
       <div class="work-card-video">
-        <iframe src="https://drive.google.com/file/d/1FN7QSrve6IT0Ac47LNczMXS324P0pS65/preview" title="CompareMunafa Video Ad" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/Ne7c_iMTS7Q" title="CompareMunafa Video Ad" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="work-card-info">
         <div class="work-card-tag">Video Ad · Radio · Finance</div>
@@ -329,58 +289,54 @@
         <div class="work-card-meta"><span class="work-card-role">Writer / Creative</span></div>
       </div>
       <div class="audio-list">
-        <div class="audio-item">
-          <span class="audio-label">Radio Spot 1</span>
-          <audio controls src="https://drive.google.com/uc?export=download&id=1hGm0tBiSpVQSrMoH86X9BDE80GhSFEuK"></audio>
-        </div>
-        <div class="audio-item">
-          <span class="audio-label">Radio Spot 2</span>
-          <audio controls src="https://drive.google.com/uc?export=download&id=1FdUJTlCBxi4WCSogRx0DpUI05VNLSrRl"></audio>
-        </div>
+        <div class="audio-item"><span class="audio-label">Laloo Ji — Radio Spot</span><audio controls src="CompareMunafa Laloo Ji.mp3"></audio></div>
+        <div class="audio-item"><span class="audio-label">Mamta Didi — Radio Spot</span><audio controls src="CompareMunafa Mamta Didi.mp3"></audio></div>
       </div>
     </div>
 
     <!-- Comio -->
     <div class="work-card reveal">
       <div class="work-card-video">
-        <iframe src="https://drive.google.com/file/d/1qWTktvk0ifLXOuOFcN0DNFzs0OO0t-JH/preview" title="Comio Mobiles Ad 1" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/JrFuJjYopk0" title="Comio Rickshawwali Ad" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="work-card-info">
         <div class="work-card-tag">Video Ad · Mobile</div>
         <div class="work-card-title">Comio Mobiles</div>
-        <div class="work-card-sub">Two ad films for mobile brand launch</div>
+        <div class="work-card-sub">Two ad films — Rickshawwali & Shraddha Sharma</div>
         <div class="work-card-meta"><span class="work-card-role">Writer / Creative</span></div>
       </div>
-      <!-- Second Comio video -->
       <div class="work-card-video" style="border-top:1px solid var(--border);">
-        <iframe src="https://www.youtube.com/embed/p1hRWo59IXs" title="Comio Mobiles Ad 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/DfGUTZ-7dQI" title="Comio Shraddha Sharma Ad" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
 
-    <!-- FS (Kashmir) -->
+    <!-- FS -->
     <div class="work-card reveal">
       <div class="work-card-video">
-        <iframe src="https://drive.google.com/file/d/1PhdCjIrcx7ktKW2JS5s_ZMWNf7SkZzx0/preview" title="FS Kashmir Video" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/YcwgXhtM8CU" title="FS Kashmir Self Made AV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="work-card-info">
-        <div class="work-card-tag">AV Film · Radio</div>
+        <div class="work-card-tag">AV Film · Video Ad · Radio</div>
         <div class="work-card-title">FS</div>
-        <div class="work-card-sub">Kashmir AV film + radio campaign</div>
+        <div class="work-card-sub">Kashmir AV + video ad + 5 radio spots</div>
         <div class="work-card-meta"><span class="work-card-role">Writer</span></div>
       </div>
+      <div class="work-card-video" style="border-top:1px solid var(--border);">
+        <iframe src="https://www.youtube.com/embed/m1GgB6kr_z0" title="FS Kashmir Video Ad" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
       <div class="audio-list">
-        <div class="audio-item"><span class="audio-label">Radio Spot 1</span><audio controls src="https://drive.google.com/uc?export=download&id=1hbjJ1WRS_xwbVRYGP38jnQ7VNfWWpSL3"></audio></div>
-        <div class="audio-item"><span class="audio-label">Radio Spot 2</span><audio controls src="https://drive.google.com/uc?export=download&id=1MyITrOkmLd42-jryHJUQHrjVeGlVWESb"></audio></div>
-        <div class="audio-item"><span class="audio-label">Radio Spot 3</span><audio controls src="https://drive.google.com/uc?export=download&id=1hksF_3M8gSKqRirWkiCr1-PebWGsC5_9"></audio></div>
-        <div class="audio-item"><span class="audio-label">Radio Spot 4</span><audio controls src="https://drive.google.com/uc?export=download&id=1csIIR7HIH43jgoT3vogwzVSBHeV3QD9p"></audio></div>
-        <div class="audio-item"><span class="audio-label">Radio Spot 5</span><audio controls src="https://drive.google.com/uc?export=download&id=1r4B77jddJa8A6u7t8YiHpNyK0fOX49Rb"></audio></div>
+        <div class="audio-item"><span class="audio-label">Gori Mem</span><audio controls src="Shanky Mirza- Gori Mem - FS Spot.mp3"></audio></div>
+        <div class="audio-item"><span class="audio-label">DJ Papa</span><audio controls src="Shanky Mirza- DJ Papa - FS Spot.mp3"></audio></div>
+        <div class="audio-item"><span class="audio-label">Dal Lake</span><audio controls src="Shanky Mirza- Dal Lake - FS Spot.mp3"></audio></div>
+        <div class="audio-item"><span class="audio-label">Nakool</span><audio controls src="Nakool- FS Spot.mp3"></audio></div>
+        <div class="audio-item"><span class="audio-label">Badi Crush</span><audio controls src="Chikloo Chauhan- Badi Crush - FS Spot.mp3"></audio></div>
       </div>
     </div>
 
     <!-- Snapdeal -->
     <div class="work-card reveal">
       <div class="work-card-video">
-        <iframe src="https://drive.google.com/file/d/1NwJDMAlwfSoDPpkN1cY6sICohvPEadzV/preview" title="Snapdeal AV" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/isADsWDhwn8" title="Snapdeal Pitch AV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="work-card-info">
         <div class="work-card-tag">AV · E-commerce · Pitch</div>
@@ -392,12 +348,7 @@
 
     <!-- Reebok -->
     <div class="work-card reveal">
-      <div class="work-card-image">
-        <div class="work-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12h6m-3-3v6"/></svg>
-          <span>Upload Cover</span>
-        </div>
-      </div>
+      <div class="work-card-image"><div class="work-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12h6m-3-3v6"/></svg><span>Upload Cover</span></div></div>
       <div class="work-card-info">
         <div class="work-card-tag">Pitch · Sports</div>
         <div class="work-card-title">Reebok</div>
@@ -409,12 +360,7 @@
 
     <!-- Crush -->
     <div class="work-card reveal">
-      <div class="work-card-image">
-        <div class="work-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12h6m-3-3v6"/></svg>
-          <span>Upload Cover</span>
-        </div>
-      </div>
+      <div class="work-card-image"><div class="work-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12h6m-3-3v6"/></svg><span>Upload Cover</span></div></div>
       <div class="work-card-info">
         <div class="work-card-tag">Brand · Campaign</div>
         <div class="work-card-title">Crush</div>
@@ -426,12 +372,7 @@
 
     <!-- Unyscape -->
     <div class="work-card reveal">
-      <div class="work-card-image">
-        <div class="work-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12h6m-3-3v6"/></svg>
-          <span>Upload Cover</span>
-        </div>
-      </div>
+      <div class="work-card-image"><div class="work-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12h6m-3-3v6"/></svg><span>Upload Cover</span></div></div>
       <div class="work-card-info">
         <div class="work-card-tag">Brand · Campaign</div>
         <div class="work-card-title">Unyscape</div>
@@ -443,12 +384,7 @@
 
     <!-- Vasu KKT -->
     <div class="work-card reveal">
-      <div class="work-card-image">
-        <div class="work-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12h6m-3-3v6"/></svg>
-          <span>Upload Cover</span>
-        </div>
-      </div>
+      <div class="work-card-image"><div class="work-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12h6m-3-3v6"/></svg><span>Upload Cover</span></div></div>
       <div class="work-card-info">
         <div class="work-card-tag">Brand · Campaign</div>
         <div class="work-card-title">Vasu KKT</div>
@@ -460,12 +396,7 @@
 
     <!-- Witlinger -->
     <div class="work-card reveal">
-      <div class="work-card-image">
-        <div class="work-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12h6m-3-3v6"/></svg>
-          <span>Upload Cover</span>
-        </div>
-      </div>
+      <div class="work-card-image"><div class="work-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12h6m-3-3v6"/></svg><span>Upload Cover</span></div></div>
       <div class="work-card-info">
         <div class="work-card-tag">Brand · Campaign</div>
         <div class="work-card-title">Witlinger</div>
