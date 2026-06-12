@@ -253,14 +253,23 @@
   .work-tile::before {
     content: '';
     position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(10,10,10,0.75) 0%, rgba(10,10,10,0.15) 60%);
+    background: linear-gradient(to top, rgba(10,10,10,0.8) 0%, rgba(10,10,10,0.25) 60%, rgba(10,10,10,0.1) 100%);
     z-index: 0;
   }
   .work-tile > * { position: relative; z-index: 1; }
   .work-tile-num { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; color: rgba(255,255,255,0.6); }
-  .work-tile-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; color: rgba(255,255,255,0.7); }
-  .work-tile-title { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; color: #fff; }
-  .work-tile-arrow { font-size: 13px; font-weight: 500; margin-top: 0.3rem; color: rgba(255,255,255,0.85); }
+  .work-tile-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 0.5rem; color: #fff;
+    display: inline-block;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(6px);
+    padding: 0.35rem 0.8rem;
+    border-radius: 100px;
+    width: fit-content;
+  }
+  .work-tile-title { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,0.5); }
+  .work-tile-arrow { font-size: 13px; font-weight: 500; margin-top: 0.3rem; color: rgba(255,255,255,0.9); text-shadow: 0 1px 6px rgba(0,0,0,0.5); }
 
   /* AWARDS */
   #awards { padding: 6rem 4rem; background: var(--white); border-bottom: 0.5px solid var(--border); }
@@ -370,10 +379,9 @@
       <span class="pill pill-purple">12+ yrs experience</span>
       <span class="pill pill-green">gold cmo asia award</span>
       <span class="pill pill-amber">scarecrow · leo burnett · rediffusion</span>
-      <span class="pill pill-gray">noida, india</span>
     </div>
     <h1 class="hero-headline">
-      i make brands<br>
+      I make brands<br>
       <span class="highlight">impossible</span>
       <span class="muted"> to ignore.</span>
     </h1>
@@ -431,7 +439,7 @@
     <a href="work.html#digital" class="work-tile work-tile-digital">
       <div class="work-tile-num">01</div>
       <div>
-        <div class="work-tile-label">performance · seo · branding · aso</div>
+        <div class="work-tile-label">performance · seo · branding </div>
         <div class="work-tile-title">Digital<br>Marketing</div>
         <div class="work-tile-arrow">explore →</div>
       </div>
