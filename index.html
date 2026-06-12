@@ -214,6 +214,23 @@
   .about-card-num.amber { color: var(--amber); }
   .about-card-lbl { font-size: 11px; color: var(--mid); margin-top: 0.4rem; letter-spacing: 0.05em; text-transform: uppercase; }
 
+  /* EXPERTISE */
+  #expertise { padding: 6rem 4rem; border-bottom: 0.5px solid var(--border); }
+  .expertise-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
+  .expertise-tag::before { content: ''; width: 16px; height: 2px; background: var(--purple); border-radius: 2px; }
+  .expertise-heading { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 600; letter-spacing: -0.03em; color: var(--black); line-height: 1.1; margin-bottom: 2.5rem; }
+  .expertise-grid { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+  .expertise-chip {
+    font-size: 13px; font-weight: 500; color: var(--black);
+    background: var(--white); border: 0.5px solid var(--border);
+    padding: 0.7rem 1.4rem; border-radius: 100px;
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  }
+  .expertise-chip:hover { background: var(--purple-light); border-color: #c4b5fd; color: var(--purple-dark); transform: translateY(-2px); }
+  .expertise-chip:nth-child(3n+1) { background: var(--purple-light); border-color: transparent; color: var(--purple-dark); }
+  .expertise-chip:nth-child(3n+2) { background: var(--amber-light); border-color: transparent; color: var(--amber-dark); }
+  .expertise-chip:nth-child(3n+3) { background: var(--white); }
+
   /* WORK */
   #work { padding: 6rem 4rem; border-bottom: 0.5px solid var(--border); }
   .work-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
@@ -224,26 +241,26 @@
   .work-bento { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .work-tile {
     border-radius: 16px; padding: 2.5rem;
-    min-height: 200px; display: flex; flex-direction: column;
-    justify-content: space-between; text-decoration: none;
+    min-height: 220px; display: flex; flex-direction: column;
+    justify-content: flex-end; text-decoration: none;
     transition: transform 0.2s, box-shadow 0.2s;
     position: relative; overflow: hidden;
+    background-size: cover; background-position: center;
   }
-  .work-tile:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
-  .work-tile-digital { background: var(--purple-light); }
-  .work-tile-brand { background: var(--amber-light); }
-  .work-tile-num { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; opacity: 0.5; }
-  .work-tile-digital .work-tile-num { color: var(--purple-mid); }
-  .work-tile-brand .work-tile-num { color: #c2410c; }
-  .work-tile-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; }
-  .work-tile-digital .work-tile-label { color: var(--purple-mid); }
-  .work-tile-brand .work-tile-label { color: #c2410c; }
-  .work-tile-title { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; }
-  .work-tile-digital .work-tile-title { color: var(--purple-dark); }
-  .work-tile-brand .work-tile-title { color: var(--amber-dark); }
-  .work-tile-arrow { font-size: 13px; font-weight: 500; margin-top: 0.3rem; }
-  .work-tile-digital .work-tile-arrow { color: var(--purple); }
-  .work-tile-brand .work-tile-arrow { color: #c2410c; }
+  .work-tile:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.15); }
+  .work-tile-digital { background-image: url('digital marketing cover.png'); }
+  .work-tile-brand { background-image: url('branding cover.png'); }
+  .work-tile::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(10,10,10,0.75) 0%, rgba(10,10,10,0.15) 60%);
+    z-index: 0;
+  }
+  .work-tile > * { position: relative; z-index: 1; }
+  .work-tile-num { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; color: rgba(255,255,255,0.6); }
+  .work-tile-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; color: rgba(255,255,255,0.7); }
+  .work-tile-title { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; color: #fff; }
+  .work-tile-arrow { font-size: 13px; font-weight: 500; margin-top: 0.3rem; color: rgba(255,255,255,0.85); }
 
   /* AWARDS */
   #awards { padding: 6rem 4rem; background: var(--white); border-bottom: 0.5px solid var(--border); }
@@ -353,10 +370,9 @@
       <span class="pill pill-purple">12+ yrs experience</span>
       <span class="pill pill-green">gold cmo asia award</span>
       <span class="pill pill-amber">scarecrow · leo burnett · rediffusion</span>
-      <span class="pill pill-gray">noida, india</span>
     </div>
     <h1 class="hero-headline">
-      i make brands<br>
+      I make brands<br>
       <span class="highlight">impossible</span>
       <span class="muted"> to ignore.</span>
     </h1>
@@ -406,6 +422,47 @@
   </div>
 </div>
 
+<section id="work">
+  <div class="work-tag">Work</div>
+  <h2 class="work-heading reveal">what i've made.</h2>
+  <p class="work-sub reveal">pick a world.</p>
+  <div class="work-bento reveal">
+    <a href="work.html#digital" class="work-tile work-tile-digital">
+      <div class="work-tile-num">01</div>
+      <div>
+        <div class="work-tile-label">performance · seo · branding · aso</div>
+        <div class="work-tile-title">Digital<br>Marketing</div>
+        <div class="work-tile-arrow">explore →</div>
+      </div>
+    </a>
+    <a href="work.html#brand" class="work-tile work-tile-brand">
+      <div class="work-tile-num">02</div>
+      <div>
+        <div class="work-tile-label">tv · radio · film · print · pitch</div>
+        <div class="work-tile-title">Brand &<br>Advertising</div>
+        <div class="work-tile-arrow">explore →</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section id="expertise">
+  <div class="expertise-tag">Expertise</div>
+  <h2 class="expertise-heading reveal">where i add value.</h2>
+  <div class="expertise-grid reveal">
+    <span class="expertise-chip">Brand Strategy & Repositioning</span>
+    <span class="expertise-chip">Integrated Campaign Management</span>
+    <span class="expertise-chip">BFSI & FinTech Marketing</span>
+    <span class="expertise-chip">Content Team Leadership</span>
+    <span class="expertise-chip">Performance Marketing Content</span>
+    <span class="expertise-chip">Social Media & ORM</span>
+    <span class="expertise-chip">ASO & SEO</span>
+    <span class="expertise-chip">AI-Powered Content Operations</span>
+    <span class="expertise-chip">Client & Stakeholder Management</span>
+    <span class="expertise-chip">Creative Writing</span>
+  </div>
+</section>
+
 <section id="about">
   <div class="about-tag">About</div>
   <div class="about-grid">
@@ -449,30 +506,6 @@
         <div class="about-card-lbl">direct reports managed</div>
       </div>
     </div>
-  </div>
-</section>
-
-<section id="work">
-  <div class="work-tag">Work</div>
-  <h2 class="work-heading reveal">what i've made.</h2>
-  <p class="work-sub reveal">pick a world.</p>
-  <div class="work-bento reveal">
-    <a href="work.html#digital" class="work-tile work-tile-digital">
-      <div class="work-tile-num">01</div>
-      <div>
-        <div class="work-tile-label">performance · seo · branding · aso</div>
-        <div class="work-tile-title">Digital<br>Marketing</div>
-        <div class="work-tile-arrow">explore →</div>
-      </div>
-    </a>
-    <a href="work.html#brand" class="work-tile work-tile-brand">
-      <div class="work-tile-num">02</div>
-      <div>
-        <div class="work-tile-label">tv · radio · film · print · pitch</div>
-        <div class="work-tile-title">Brand &<br>Advertising</div>
-        <div class="work-tile-arrow">explore →</div>
-      </div>
-    </a>
   </div>
 </section>
 
