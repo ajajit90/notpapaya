@@ -6,292 +6,328 @@
 <title>Ajit Kumar — MARCOM Leader & Creative</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --bg: #f7f8f6;
+    --bg: #f9f9f7;
     --white: #ffffff;
-    --black: #111111;
-    --mid: #555550;
-    --light: #e8e8e4;
-    --border: #e0e2dd;
-    --sage: #8fa898;
-    --sage-light: #eef2ee;
-    --sage-mid: #d4ddd6;
-    --slate: #6b7fa3;
-    --slate-light: #edf0f7;
-    --slate-mid: #c8d0e4;
-    --grey-green: #7a8f84;
-    --grey-green-light: #ecf0ed;
-    --font-serif: 'Playfair Display', serif;
-    --font-body: 'Inter', sans-serif;
+    --black: #0f0f0f;
+    --mid: #666660;
+    --border: #e4e4e0;
+    --purple: #7c3aed;
+    --purple-light: #f3e8ff;
+    --purple-mid: #6d28d9;
+    --purple-dark: #4c1d95;
+    --amber: #d97706;
+    --amber-light: #fff7ed;
+    --amber-dark: #7c2d12;
+    --green: #059669;
+    --green-light: #ecfdf5;
+    --font: 'Inter', sans-serif;
   }
 
   html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--black); font-family: var(--font-body); font-weight: 300; line-height: 1.6; overflow-x: hidden; }
+  body { background: var(--bg); color: var(--black); font-family: var(--font); font-weight: 400; line-height: 1.6; overflow-x: hidden; }
 
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; justify-content: space-between; align-items: center;
-    padding: 1.6rem 5rem;
-    background: rgba(247,248,246,0.96); backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
+    padding: 1.1rem 4rem;
+    background: rgba(249,249,247,0.92); backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
   }
-  .nav-logo { font-family: var(--font-serif); font-size: 1.2rem; color: var(--black); text-decoration: none; }
-  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+  .nav-brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+  .nav-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--purple); }
+  .nav-name { font-size: 14px; font-weight: 500; color: var(--black); letter-spacing: -0.01em; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links a { font-size: 13px; color: var(--mid); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--black); }
+  .nav-cta {
+    background: var(--purple); color: #fff;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.03em;
+    padding: 0.5rem 1.2rem; border-radius: 100px;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--purple-mid); }
 
   /* HERO */
   #hero {
     min-height: 100vh; display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 5rem; padding-top: 7rem;
-    align-items: center; gap: 4rem;
-    border-bottom: 1px solid var(--border);
-    background: linear-gradient(135deg, #f7f8f6 60%, #edf0f7 100%);
+    grid-template-columns: 1.3fr 1fr;
+    align-items: start; gap: 3rem;
+    padding: 8rem 4rem 4rem;
+    position: relative; overflow: hidden;
   }
 
-  .hero-left { padding: 4rem 0; }
+  /* subtle grid bg */
+  #hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.4;
+    pointer-events: none;
+  }
 
-  .hero-eyebrow {
-    font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--slate); margin-bottom: 2rem;
-    display: flex; align-items: center; gap: 1rem;
+  .hero-inner { position: relative; z-index: 1; }
+
+  .hero-image-wrap {
+    position: relative; z-index: 1;
+    display: flex; justify-content: center; align-items: flex-start;
+    margin-top: 3.2rem;
     opacity: 0; animation: fadeIn 0.8s ease forwards 0.3s;
   }
-  .hero-eyebrow::before { content: ''; width: 30px; height: 1px; background: var(--slate); }
+  .hero-image-frame {
+    position: relative;
+    width: 100%; max-width: 380px;
+    aspect-ratio: 4/5;
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--purple-light);
+  }
+  .hero-image-frame img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .hero-image-tag {
+    position: absolute; bottom: 1.2rem; left: 1.2rem; right: 1.2rem;
+    background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
+    border-radius: 12px; padding: 0.8rem 1.2rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .hero-image-tag-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s ease-in-out infinite; }
+  .hero-image-tag-text { font-size: 12px; font-weight: 500; color: var(--black); }
+  .hero-image-tag-sub { font-size: 10px; color: var(--mid); }
 
-  .hero-name {
-    font-family: var(--font-serif); font-size: clamp(3.5rem, 6vw, 5.5rem);
-    line-height: 1.05; font-weight: 700; color: var(--black);
-    opacity: 0; animation: fadeIn 0.8s ease forwards 0.5s;
+  @keyframes fadeIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+
+  /* PILLS */
+  .hero-pills {
+    display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem;
+    opacity: 0; animation: fadeUp 0.6s ease forwards 0.2s;
+  }
+  .pill {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.03em;
+    padding: 0.35rem 0.9rem; border-radius: 100px;
+  }
+  .pill-purple { background: var(--purple-light); color: var(--purple-mid); }
+  .pill-green { background: var(--green-light); color: var(--green); }
+  .pill-amber { background: var(--amber-light); color: #9a3412; }
+  .pill-gray { background: #f1f0eb; color: var(--mid); border: 0.5px solid var(--border); }
+
+  /* HEADLINE */
+  .hero-headline {
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 600; line-height: 0.95;
+    letter-spacing: -0.04em; color: var(--black);
+    margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp 0.7s ease forwards 0.4s;
   }
 
-  .hero-tagline {
-    font-size: 1.05rem; color: var(--mid); line-height: 1.75;
-    margin-top: 2rem; max-width: 420px;
-    opacity: 0; animation: fadeIn 0.8s ease forwards 0.7s;
+  .hero-headline .highlight {
+    position: relative; display: inline-block;
   }
-  .hero-tagline strong { color: var(--black); font-weight: 500; }
+  .hero-headline .highlight::after {
+    content: '';
+    position: absolute; bottom: 4px; left: -2px; right: -2px; height: 14px;
+    background: #fbbf24; opacity: 0.35; z-index: -1;
+    border-radius: 3px;
+  }
 
+  .hero-headline .muted { color: var(--mid); }
+
+  /* SUBTEXT */
+  .hero-sub {
+    font-size: 16px; color: var(--mid); line-height: 1.7;
+    max-width: 500px; margin-bottom: 2.5rem;
+    opacity: 0; animation: fadeUp 0.7s ease forwards 0.6s;
+  }
+  .hero-sub strong { color: var(--black); font-weight: 500; }
+
+  /* CTA ROW */
   .hero-cta {
-    display: flex; gap: 1.2rem; margin-top: 3rem; flex-wrap: wrap;
-    opacity: 0; animation: fadeIn 0.8s ease forwards 0.9s;
+    display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.7s ease forwards 0.8s;
   }
-
-  .btn-dark {
-    display: inline-flex; align-items: center; gap: 0.6rem;
-    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
-    background: var(--black); color: var(--white);
-    padding: 0.85rem 2rem; text-decoration: none; transition: background 0.2s;
+  .btn-primary {
+    background: var(--purple); color: #fff;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.02em;
+    padding: 0.85rem 2rem; border-radius: 10px;
+    text-decoration: none; transition: background 0.2s, transform 0.1s;
+    display: inline-flex; align-items: center; gap: 0.4rem;
   }
-  .btn-dark:hover { background: var(--slate); }
-
-  .btn-ghost {
-    display: inline-flex; align-items: center; gap: 0.6rem;
-    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--black); padding: 0.85rem 2rem; text-decoration: none;
-    border: 1px solid var(--border); transition: border-color 0.2s, color 0.2s, background 0.2s;
+  .btn-primary:hover { background: var(--purple-mid); transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent; color: var(--black);
+    font-size: 13px; font-weight: 500;
+    padding: 0.85rem 2rem; border-radius: 10px;
+    border: 0.5px solid var(--border);
+    text-decoration: none; transition: border-color 0.2s, background 0.2s;
   }
-  .btn-ghost:hover { border-color: var(--slate); color: var(--slate); background: var(--slate-light); }
-
-  .hero-right {
-    display: flex; flex-direction: column; gap: 2px;
-    opacity: 0; animation: fadeIn 1s ease forwards 1s;
+  .btn-secondary:hover { border-color: var(--black); background: var(--white); }
+  .hero-availability {
+    font-size: 12px; color: var(--mid); display: flex; align-items: center; gap: 0.4rem;
   }
+  .avail-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s ease-in-out infinite; }
 
-  .hero-stat {
-    background: var(--white); border: 1px solid var(--border);
-    padding: 2rem 2.5rem;
-    display: flex; justify-content: space-between; align-items: center;
-    transition: background 0.25s, border-color 0.25s;
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  /* STATS STRIP */
+  .stats-strip {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0.5px; background: var(--border);
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
   }
-  .hero-stat:nth-child(1):hover { background: var(--slate-light); border-color: var(--slate-mid); }
-  .hero-stat:nth-child(2):hover { background: var(--sage-light); border-color: var(--sage-mid); }
-  .hero-stat:nth-child(3):hover { background: var(--grey-green-light); border-color: var(--sage-mid); }
-  .hero-stat:nth-child(4):hover { background: var(--slate-light); border-color: var(--slate-mid); }
-  .hero-stat-number { font-family: var(--font-serif); font-size: 2.8rem; font-weight: 700; color: var(--black); line-height: 1; }
-  .hero-stat-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); text-align: right; max-width: 160px; }
-
-
-
-  /* SECTIONS */
-  section { padding: 7rem 5rem; }
-  .section-label {
-    font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--slate); margin-bottom: 0.8rem;
-    display: flex; align-items: center; gap: 0.8rem;
-  }
-  .section-label::before { content: ''; width: 20px; height: 1px; background: var(--slate); }
-  .section-title { font-family: var(--font-serif); font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.15; margin-bottom: 1rem; color: var(--black); }
-  .section-subtitle { font-size: 0.95rem; color: var(--mid); margin-bottom: 3rem; max-width: 500px; line-height: 1.7; }
+  .stat-box { background: var(--white); padding: 1.5rem 2rem; text-align: center; transition: background 0.2s; }
+  .stat-box:hover { background: var(--purple-light); }
+  .stat-val { font-size: 2rem; font-weight: 600; letter-spacing: -0.04em; color: var(--black); line-height: 1; }
+  .stat-val.purple { color: var(--purple); }
+  .stat-lbl { font-size: 11px; color: var(--mid); margin-top: 0.4rem; letter-spacing: 0.02em; }
 
   /* ABOUT */
-  #about {
-    background: var(--white); border-top: 1px solid var(--border);
-    position: relative; overflow: hidden;
-  }
-  #about::before {
-    content: ''; position: absolute; top: 0; right: 0;
-    width: 35%; height: 100%;
-    background: linear-gradient(135deg, transparent 40%, var(--sage-light) 100%);
-    pointer-events: none;
-  }
+  #about { padding: 6rem 4rem; background: var(--white); border-bottom: 0.5px solid var(--border); }
+  .about-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
+  .about-tag::before { content: ''; width: 16px; height: 2px; background: var(--purple); border-radius: 2px; }
+  .about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 6rem; align-items: start; margin-top: 2rem; }
+  .about-text { font-size: 15px; color: var(--mid); line-height: 1.85; }
+  .about-text p { margin-bottom: 1.2rem; }
+  .about-text strong { color: var(--black); font-weight: 500; }
+  .about-heading { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 600; letter-spacing: -0.03em; color: var(--black); line-height: 1.1; margin-bottom: 1.5rem; }
 
-  .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 7rem; align-items: start; position: relative; }
-  .about-text p { font-size: 1rem; line-height: 1.85; color: var(--mid); margin-bottom: 1.4rem; }
-  .about-text p strong { color: var(--black); font-weight: 500; }
+  .timeline { margin-top: 2rem; }
+  .tl-item { display: grid; grid-template-columns: 110px 1fr; gap: 1.5rem; padding: 1.2rem 0; border-top: 0.5px solid var(--border); }
+  .tl-item:last-child { border-bottom: 0.5px solid var(--border); }
+  .tl-year { font-size: 11px; color: var(--purple); font-weight: 500; letter-spacing: 0.05em; padding-top: 0.2rem; }
+  .tl-role { font-size: 14px; font-weight: 500; color: var(--black); }
+  .tl-company { font-size: 12px; color: var(--mid); margin-top: 0.15rem; }
 
-  .timeline { margin-top: 3rem; }
-  .timeline-item { display: grid; grid-template-columns: 120px 1fr; gap: 1.5rem; padding: 1.5rem 0; border-top: 1px solid var(--border); }
-  .timeline-item:last-child { border-bottom: 1px solid var(--border); }
-  .timeline-year { font-size: 0.68rem; letter-spacing: 0.1em; color: var(--slate); text-transform: uppercase; padding-top: 0.2rem; }
-  .timeline-role { font-size: 0.95rem; font-weight: 500; color: var(--black); }
-  .timeline-company { font-size: 0.82rem; color: var(--mid); margin-top: 0.2rem; }
+  .about-cards { display: flex; flex-direction: column; gap: 0.5px; background: var(--border); border-radius: 16px; overflow: hidden; }
+  .about-card { padding: 1.8rem; background: var(--white); transition: background 0.2s; }
+  .about-card:hover { background: var(--bg); }
+  .about-card-num { font-size: 2.8rem; font-weight: 600; letter-spacing: -0.04em; color: var(--black); line-height: 1; }
+  .about-card-num.purple { color: var(--purple); }
+  .about-card-num.amber { color: var(--amber); }
+  .about-card-lbl { font-size: 11px; color: var(--mid); margin-top: 0.4rem; letter-spacing: 0.05em; text-transform: uppercase; }
 
-  .about-right { display: flex; flex-direction: column; gap: 1px; }
-  .about-card { padding: 2rem; border: 1px solid var(--border); transition: filter 0.2s; }
-  .about-card:nth-child(1) { background: var(--slate-light); }
-  .about-card:nth-child(2) { background: var(--sage-light); }
-  .about-card:nth-child(3) { background: var(--grey-green-light); }
-  .about-card:nth-child(4) { background: var(--slate-light); }
-  .about-card:hover { filter: brightness(0.97); }
-  .about-card-num { font-family: var(--font-serif); font-size: 3rem; font-weight: 700; color: var(--black); line-height: 1; }
-  .about-card-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); margin-top: 0.4rem; }
+  /* WORK */
+  #work { padding: 6rem 4rem; border-bottom: 0.5px solid var(--border); }
+  .work-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
+  .work-tag::before { content: ''; width: 16px; height: 2px; background: var(--purple); border-radius: 2px; }
+  .work-heading { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 600; letter-spacing: -0.03em; color: var(--black); line-height: 1.1; margin-bottom: 0.5rem; }
+  .work-sub { font-size: 14px; color: var(--mid); margin-bottom: 3rem; }
 
-  /* WORK — TWO TILES */
-  #work { border-top: 1px solid var(--border); background: var(--bg); }
-
-  .work-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-
+  .work-bento { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .work-tile {
+    border-radius: 16px; padding: 2.5rem;
+    min-height: 200px; display: flex; flex-direction: column;
+    justify-content: space-between; text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
     position: relative; overflow: hidden;
-    text-decoration: none; display: block;
-    aspect-ratio: 4/3;
-    background: var(--white);
-    border: 1px solid var(--border);
-    transition: border-color 0.3s;
   }
-  .work-tile:hover { border-color: var(--slate); }
-
-  /* Placeholder bg — replace with cover image later */
-  .work-tile-digital { background: linear-gradient(145deg, #dde8f0 0%, #c8d8e8 40%, #e2ecd6 100%); }
-  .work-tile-brand { background: linear-gradient(145deg, #e2ece4 0%, #c8d8cc 40%, #d8e4ec 100%); }
-
-  .work-tile::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0;
-    height: 4px; z-index: 1;
-  }
-  .work-tile-digital::before { background: linear-gradient(to right, var(--slate), var(--sage)); }
-  .work-tile-brand::before { background: linear-gradient(to right, var(--grey-green), var(--slate)); }
-    position: absolute; inset: 0;
-    width: 100%; height: 100%; object-fit: cover;
-    display: block;
-  }
-
-  .work-tile-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(10,10,10,0.75) 0%, transparent 55%);
-    display: flex; flex-direction: column; justify-content: flex-end;
-    padding: 2.5rem;
-    transition: background 0.3s;
-  }
-  .work-tile:hover .work-tile-overlay {
-    background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.1) 100%);
-  }
-
-  .work-tile-label {
-    font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase;
-    color: rgba(255,255,255,0.65); margin-bottom: 0.5rem;
-  }
-  .work-tile-title {
-    font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2.2rem);
-    font-weight: 700; color: var(--white); line-height: 1.15;
-  }
-  .work-tile-arrow {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: rgba(255,255,255,0.65); margin-top: 1rem;
-    transition: gap 0.2s, color 0.2s;
-  }
-  .work-tile:hover .work-tile-arrow { gap: 0.9rem; color: var(--white); }
-
-  /* No cover image state — placeholder text */
-  .work-tile-placeholder {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--mid); opacity: 0.5;
-  }
-
-  .work-footer { display: flex; gap: 1.5rem; margin-top: 3rem; align-items: center; }
+  .work-tile:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+  .work-tile-digital { background: var(--purple-light); }
+  .work-tile-brand { background: var(--amber-light); }
+  .work-tile-num { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; opacity: 0.5; }
+  .work-tile-digital .work-tile-num { color: var(--purple-mid); }
+  .work-tile-brand .work-tile-num { color: #c2410c; }
+  .work-tile-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; }
+  .work-tile-digital .work-tile-label { color: var(--purple-mid); }
+  .work-tile-brand .work-tile-label { color: #c2410c; }
+  .work-tile-title { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; }
+  .work-tile-digital .work-tile-title { color: var(--purple-dark); }
+  .work-tile-brand .work-tile-title { color: var(--amber-dark); }
+  .work-tile-arrow { font-size: 13px; font-weight: 500; margin-top: 0.3rem; }
+  .work-tile-digital .work-tile-arrow { color: var(--purple); }
+  .work-tile-brand .work-tile-arrow { color: #c2410c; }
 
   /* AWARDS */
-  #awards {
-    background: var(--white); border-top: 1px solid var(--border);
-    position: relative; overflow: hidden;
-  }
-  #awards::before {
-    content: ''; position: absolute; bottom: 0; left: 0;
-    width: 40%; height: 60%;
-    background: linear-gradient(135deg, var(--sage-light) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .awards-list { display: flex; flex-direction: column; position: relative; }
+  #awards { padding: 6rem 4rem; background: var(--white); border-bottom: 0.5px solid var(--border); }
+  .awards-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
+  .awards-tag::before { content: ''; width: 16px; height: 2px; background: var(--purple); border-radius: 2px; }
+  .awards-heading { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 600; letter-spacing: -0.03em; color: var(--black); line-height: 1.1; margin-bottom: 3rem; }
+  .awards-list { display: flex; flex-direction: column; gap: 0.5px; background: var(--border); border-radius: 16px; overflow: hidden; }
   .award-row {
-    display: grid; grid-template-columns: 100px 1fr auto; align-items: center;
-    gap: 2rem; padding: 2rem 0; border-top: 1px solid var(--border);
-    transition: background 0.2s, padding 0.2s, margin 0.2s;
+    display: grid; grid-template-columns: 80px 1fr auto;
+    align-items: center; gap: 2rem; padding: 1.8rem 2rem;
+    background: var(--white); transition: background 0.2s;
   }
-  .award-row:last-child { border-bottom: 1px solid var(--border); }
-  .award-row:nth-child(1):hover { background: var(--grey-green-light); margin: 0 -2rem; padding: 2rem; }
-  .award-row:nth-child(2):hover { background: var(--slate-light); margin: 0 -2rem; padding: 2rem; }
-  .award-row:nth-child(3):hover { background: var(--sage-light); margin: 0 -2rem; padding: 2rem; }
-  .award-year { font-family: var(--font-serif); font-size: 1.6rem; color: var(--slate); font-weight: 400; }
-  .award-title { font-size: 1rem; font-weight: 500; color: var(--black); }
-  .award-org { font-size: 0.8rem; color: var(--mid); margin-top: 0.2rem; }
-  .award-tag { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--slate); border: 1px solid var(--slate-mid); padding: 0.3rem 0.8rem; white-space: nowrap; }
+  .award-row:hover { background: var(--purple-light); }
+  .award-year { font-size: 1.4rem; font-weight: 600; letter-spacing: -0.03em; color: var(--purple); }
+  .award-title { font-size: 14px; font-weight: 500; color: var(--black); }
+  .award-org { font-size: 12px; color: var(--mid); margin-top: 0.2rem; }
+  .award-badge {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.05em;
+    padding: 0.3rem 0.8rem; border-radius: 100px;
+  }
+  .badge-gold { background: #fef3c7; color: #92400e; }
+  .badge-current { background: var(--green-light); color: #065f46; }
+  .badge-agency { background: var(--purple-light); color: var(--purple-mid); }
 
   /* CONTACT */
-  #contact {
-    border-top: 1px solid var(--border);
-    background: linear-gradient(135deg, var(--slate-light) 0%, var(--sage-light) 50%, var(--bg) 100%);
+  #contact { padding: 6rem 4rem; border-bottom: 0.5px solid var(--border); background: var(--black); }
+  .contact-inner { max-width: 700px; }
+  .contact-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.6rem; }
+  .contact-tag::before { content: ''; width: 16px; height: 2px; background: var(--purple); border-radius: 2px; }
+  .contact-heading { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 600; letter-spacing: -0.04em; line-height: 0.95; color: #fff; margin-bottom: 1.5rem; }
+  .contact-heading em { color: var(--purple); font-style: normal; }
+  .contact-sub { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 2.5rem; }
+  .contact-links { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+  .btn-white {
+    background: #fff; color: var(--black);
+    font-size: 13px; font-weight: 500;
+    padding: 0.85rem 2rem; border-radius: 10px;
+    text-decoration: none; transition: background 0.2s;
   }
-  .contact-inner { max-width: 680px; }
-  .contact-headline { font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; }
-  .contact-sub { font-size: 1rem; color: var(--mid); line-height: 1.7; margin-bottom: 3rem; }
-  .contact-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  .btn-white:hover { background: var(--purple-light); }
+  .btn-outline-white {
+    background: transparent; color: #fff;
+    font-size: 13px; font-weight: 500;
+    padding: 0.85rem 2rem; border-radius: 10px;
+    border: 0.5px solid rgba(255,255,255,0.2);
+    text-decoration: none; transition: border-color 0.2s;
+  }
+  .btn-outline-white:hover { border-color: rgba(255,255,255,0.5); }
 
   /* FOOTER */
-  footer { padding: 2rem 5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--white); }
-  footer p { font-size: 0.68rem; color: var(--mid); letter-spacing: 0.08em; }
-  .footer-logo { font-family: var(--font-serif); font-size: 1.1rem; color: var(--mid); }
+  footer {
+    padding: 1.5rem 4rem; background: var(--black);
+    border-top: 0.5px solid rgba(255,255,255,0.08);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  footer p { font-size: 12px; color: rgba(255,255,255,0.3); }
+  .footer-brand { display: flex; align-items: center; gap: 0.5rem; }
+  .footer-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--purple); opacity: 0.5; }
+  .footer-name { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.4); }
 
   /* ANIMATIONS */
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
+  /* RESPONSIVE */
   @media (max-width: 960px) {
-    nav { padding: 1.2rem 2.5rem; }
-    section { padding: 5rem 2.5rem; }
-    #hero { grid-template-columns: 1fr; padding: 8rem 2.5rem 4rem; min-height: auto; }
+    nav { padding: 1rem 2rem; }
+    #hero, #about, #work, #awards, #contact { padding: 5rem 2rem; }
+    #hero { padding-top: 7rem; grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-image-wrap { order: -1; }
+    .hero-image-frame { max-width: 280px; }
     .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-    footer { padding: 1.5rem 2.5rem; }
+    .stats-strip { grid-template-columns: 1fr 1fr; }
+    footer { padding: 1.5rem 2rem; }
   }
   @media (max-width: 600px) {
     nav { padding: 1rem 1.5rem; }
-    .nav-links { gap: 1.5rem; }
-    section { padding: 4rem 1.5rem; }
-    #hero { padding: 7rem 1.5rem 3rem; }
-    .work-tiles { grid-template-columns: 1fr; }
-    .award-row { grid-template-columns: 70px 1fr; }
-    .award-tag { display: none; }
+    .nav-links .hide-mobile { display: none; }
+    #hero, #about, #work, #awards, #contact { padding: 4rem 1.5rem; }
+    #hero { padding-top: 6rem; }
+    .work-bento { grid-template-columns: 1fr; }
+    .award-row { grid-template-columns: 60px 1fr; }
+    .award-badge { display: none; }
     footer { flex-direction: column; gap: 0.8rem; text-align: center; }
   }
 </style>
@@ -299,134 +335,198 @@
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">Ajit Kumar</a>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-dot"></div>
+    <span class="nav-name">ajit kumar</span>
+  </a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="work.html">Work</a></li>
-    <li><a href="#awards">Awards</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li class="hide-mobile"><a href="#about">about</a></li>
+    <li><a href="work-genz.html">work</a></li>
+    <li class="hide-mobile"><a href="#awards">awards</a></li>
+    <li><a href="#contact" class="nav-cta">say hi →</a></li>
   </ul>
 </nav>
 
 <section id="hero">
-  <div class="hero-left">
-    <div class="hero-eyebrow">Head of Marketing Communications</div>
-    <h1 class="hero-name">Storyteller.<br>Strategist.<br>Leader.</h1>
-    <p class="hero-tagline">
-      <strong>12+ years</strong> making brands impossible to ignore — from 30-second TV spots at top agencies to leading full-funnel digital strategy.
+  <div class="hero-inner">
+    <div class="hero-pills">
+      <span class="pill pill-purple">12+ yrs experience</span>
+      <span class="pill pill-green">gold cmo asia award</span>
+      <span class="pill pill-amber">scarecrow · leo burnett · rediffusion</span>
+      <span class="pill pill-gray">noida, india</span>
+    </div>
+    <h1 class="hero-headline">
+      i make brands<br>
+      <span class="highlight">impossible</span>
+      <span class="muted"> to ignore.</span>
+    </h1>
+    <p class="hero-sub">
+      tv spots → reels → search ads → marcom leadership.<br>
+      one brain. <strong>many mediums. real results.</strong>
     </p>
     <div class="hero-cta">
-      <a href="#work" class="btn-dark">View Work</a>
-      <a href="#contact" class="btn-ghost">Get in Touch</a>
+      <a href="work-genz.html" class="btn-primary">view work ↗</a>
+      <a href="#contact" class="btn-secondary">get in touch</a>
+      <div class="hero-availability">
+        <div class="avail-dot"></div>
+        open to opportunities
+      </div>
     </div>
   </div>
-  <div class="hero-right">
-    <div class="hero-stat"><span class="hero-stat-number">12+</span><span class="hero-stat-label">Years in advertising & marketing</span></div>
-    <div class="hero-stat"><span class="hero-stat-number">3</span><span class="hero-stat-label">Top-tier creative agencies</span></div>
-    <div class="hero-stat"><span class="hero-stat-number">01</span><span class="hero-stat-label">Gold CMO Asia Award</span></div>
-    <div class="hero-stat"><span class="hero-stat-number">TV</span><span class="hero-stat-label">to full-funnel digital</span></div>
+  <div class="hero-image-wrap">
+    <div class="hero-image-frame">
+      <img src="Ajit Cover Image.png" alt="Ajit Kumar">
+      <div class="hero-image-tag">
+        <div class="hero-image-tag-dot"></div>
+        <div>
+          <div class="hero-image-tag-text">Ajit Kumar</div>
+          <div class="hero-image-tag-text">Storyteller. Strategist. Leader.</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-
+<div class="stats-strip">
+  <div class="stat-box reveal">
+    <div class="stat-val purple">12+</div>
+    <div class="stat-lbl">years in advertising & marketing</div>
+  </div>
+  <div class="stat-box reveal">
+    <div class="stat-val">3</div>
+    <div class="stat-lbl">top-tier creative agencies</div>
+  </div>
+  <div class="stat-box reveal">
+    <div class="stat-val">01</div>
+    <div class="stat-lbl">gold cmo asia award</div>
+  </div>
+  <div class="stat-box reveal">
+    <div class="stat-val">tv →</div>
+    <div class="stat-lbl">to full-funnel digital</div>
+  </div>
+</div>
 
 <section id="about">
-  <div class="section-label">About</div>
+  <div class="about-tag">About</div>
   <div class="about-grid">
     <div class="about-text reveal">
-      <p>I started in advertising when ideas lived on paper and played out on TV. I've written scripts that aired nationally, pitched campaigns that won awards, and built brands from a blank brief at some of India's best agencies.</p>
-      <p>Over the last seven years, I moved into the digital world — not as a pivot, but as an <strong>expansion</strong>. Performance marketing, content strategy, SEO, social — I learned them the way I learned copywriting: by doing the work.</p>
-      <p>Today I lead MARCOM at <strong>Intelegencia Digital</strong> — managing strategy, teams, and client accounts across India, the US, and the Philippines.</p>
+      <h2 class="about-heading">the arc,<br>not just the résumé.</h2>
+      <p>started in advertising when ideas lived on paper and played out on tv. wrote scripts that aired nationally, pitched campaigns that won awards, built brands from a blank brief at some of india's best agencies.</p>
+      <p>over the last seven years, moved into digital — not as a pivot, but as an <strong>expansion</strong>. performance marketing, content strategy, seo, social — learned them the way i learned copywriting: by doing the work.</p>
+      <p>today leading marcom at <strong>intelegencia digital</strong> — managing strategy, teams, and client accounts across india, the us, and the philippines.</p>
       <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-year">2018 – Now</div>
-          <div><div class="timeline-role">Head of MARCOM</div><div class="timeline-company">Intelegencia Digital Pvt. Ltd. · Noida</div></div>
+        <div class="tl-item">
+          <div class="tl-year">2018 – now</div>
+          <div>
+            <div class="tl-role">Head of MARCOM</div>
+            <div class="tl-company">Intelegencia Digital · Noida</div>
+          </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-year">Agency Years</div>
-          <div><div class="timeline-role">Senior Writer / Copywriter</div><div class="timeline-company">Scarecrow M&C Saatchi · Leo Burnett · Rediffusion Y&R</div></div>
+        <div class="tl-item">
+          <div class="tl-year">agency years</div>
+          <div>
+            <div class="tl-role">Senior Writer / Copywriter</div>
+            <div class="tl-company">Scarecrow M&C Saatchi · Leo Burnett · Rediffusion Y&R</div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="about-right reveal">
-      <div class="about-card"><div class="about-card-num">12+</div><div class="about-card-label">Years of experience</div></div>
-      <div class="about-card"><div class="about-card-num">3</div><div class="about-card-label">Top creative agencies</div></div>
-      <div class="about-card"><div class="about-card-num">Gold</div><div class="about-card-label">CMO Asia Award</div></div>
-      <div class="about-card"><div class="about-card-num">4</div><div class="about-card-label">Direct reports managed</div></div>
+    <div class="about-cards reveal">
+      <div class="about-card">
+        <div class="about-card-num purple">12+</div>
+        <div class="about-card-lbl">years of experience</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-num">3</div>
+        <div class="about-card-lbl">top creative agencies</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-num amber">gold</div>
+        <div class="about-card-lbl">cmo asia award</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-num">4</div>
+        <div class="about-card-lbl">direct reports managed</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- WORK -->
 <section id="work">
-  <div class="section-label">Work</div>
-  <h2 class="section-title reveal">What I've Made</h2>
-  <p class="section-subtitle reveal">Two decades of work across two very different worlds. Pick where you want to go.</p>
-
-  <div class="work-tiles reveal">
-
-    <!-- Digital Marketing Tile -->
+  <div class="work-tag">Work</div>
+  <h2 class="work-heading reveal">what i've made.</h2>
+  <p class="work-sub reveal">pick a world.</p>
+  <div class="work-bento reveal">
     <a href="work.html#digital" class="work-tile work-tile-digital">
-      <div class="work-tile-placeholder">Add cover image</div>
-      <div class="work-tile-overlay">
-        <div class="work-tile-label">Performance · SEO · Branding · ASO</div>
+      <div class="work-tile-num">01</div>
+      <div>
+        <div class="work-tile-label">performance · seo · branding · aso</div>
         <div class="work-tile-title">Digital<br>Marketing</div>
-        <div class="work-tile-arrow">Explore work →</div>
+        <div class="work-tile-arrow">explore →</div>
       </div>
     </a>
-
-    <!-- Brand & Advertising Tile -->
     <a href="work.html#brand" class="work-tile work-tile-brand">
-      <div class="work-tile-placeholder">Add cover image</div>
-      <div class="work-tile-overlay">
-        <div class="work-tile-label">TV · Radio · Film · Print · Pitch</div>
+      <div class="work-tile-num">02</div>
+      <div>
+        <div class="work-tile-label">tv · radio · film · print · pitch</div>
         <div class="work-tile-title">Brand &<br>Advertising</div>
-        <div class="work-tile-arrow">Explore work →</div>
+        <div class="work-tile-arrow">explore →</div>
       </div>
     </a>
-
   </div>
 </section>
 
 <section id="awards">
-  <div class="section-label">Recognition</div>
-  <h2 class="section-title reveal">Awards & Credentials</h2>
-  <div class="awards-list">
-    <div class="award-row reveal">
+  <div class="awards-tag">Recognition</div>
+  <h2 class="awards-heading reveal">awards &<br>credentials.</h2>
+  <div class="awards-list reveal">
+    <div class="award-row">
       <div class="award-year">2023</div>
-      <div><div class="award-title">Gold Award — Best Digital Campaign</div><div class="award-org">CMO Asia Awards · Policybazaar</div></div>
-      <div class="award-tag">Gold</div>
+      <div>
+        <div class="award-title">Gold Award — Best Digital Campaign</div>
+        <div class="award-org">CMO Asia Awards · Policybazaar</div>
+      </div>
+      <div class="award-badge badge-gold">gold</div>
     </div>
-    <div class="award-row reveal">
-      <div class="award-year">Now</div>
-      <div><div class="award-title">Head of Marketing Communications</div><div class="award-org">Intelegencia Digital · Noida / New York / Philippines</div></div>
-      <div class="award-tag">Current</div>
+    <div class="award-row">
+      <div class="award-year">now</div>
+      <div>
+        <div class="award-title">Head of Marketing Communications</div>
+        <div class="award-org">Intelegencia Digital · Noida / New York / Philippines</div>
+      </div>
+      <div class="award-badge badge-current">current</div>
     </div>
-    <div class="award-row reveal">
+    <div class="award-row">
       <div class="award-year">—</div>
-      <div><div class="award-title">Senior Writer · TV, Digital, Radio</div><div class="award-org">Scarecrow M&C Saatchi · Leo Burnett · Rediffusion Y&R</div></div>
-      <div class="award-tag">Agency</div>
+      <div>
+        <div class="award-title">Senior Writer · TV, Digital, Radio</div>
+        <div class="award-org">Scarecrow M&C Saatchi · Leo Burnett · Rediffusion Y&R</div>
+      </div>
+      <div class="award-badge badge-agency">agency</div>
     </div>
   </div>
 </section>
 
 <section id="contact">
   <div class="contact-inner">
-    <div class="section-label">Contact</div>
-    <h2 class="contact-headline reveal">Got a brief?<br><em>Let's talk.</em></h2>
-    <p class="contact-sub reveal">Open to senior roles, consulting engagements, and interesting briefs. Based in India — available globally.</p>
+    <div class="contact-tag">Contact</div>
+    <h2 class="contact-heading reveal">got a<br><em>brief?</em></h2>
+    <p class="contact-sub reveal">open to senior roles, consulting engagements, and interesting briefs. based in greater noida — available globally.</p>
     <div class="contact-links reveal">
-      <a href="mailto:ajajit90@gmail.com" class="btn-dark">Send an Email</a>
-      <a href="https://www.linkedin.com/in/ajajit" target="_blank" class="btn-ghost">LinkedIn</a>
-      <a href="https://www.behance.net/ajajit" target="_blank" class="btn-ghost">Behance</a>
+      <a href="mailto:your@email.com" class="btn-white">send an email</a>
+      <a href="https://www.linkedin.com/in/ajajit" target="_blank" class="btn-outline-white">linkedin ↗</a>
+      <a href="https://www.behance.net/ajajit" target="_blank" class="btn-outline-white">behance ↗</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Ajit Kumar</p>
-  <div class="footer-logo">notpapaya</div>
-  <p>India</p>
+  <p>© 2026 ajit kumar</p>
+  <div class="footer-brand">
+    <div class="footer-dot"></div>
+    <span class="footer-name">notpapaya</span>
+  </div>
+  <p>greater noida, india</p>
 </footer>
 
 <script>
