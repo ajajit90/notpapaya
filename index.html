@@ -56,10 +56,10 @@
   .nav-dropdown { position: relative; }
   .nav-dropdown > a { display: flex; align-items: center; gap: 0.3rem; }
   .nav-dropdown-menu {
-    display: none; position: absolute; top: calc(100% + 0.75rem); left: 50%;
+    display: none; position: absolute; top: 100%; left: 50%;
     transform: translateX(-50%);
     background: var(--white); border: 0.5px solid var(--border); border-radius: 10px;
-    padding: 0.4rem; min-width: 190px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    padding: 0.75rem 0.4rem 0.4rem; min-width: 190px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     z-index: 200;
   }
   .nav-dropdown:hover .nav-dropdown-menu { display: flex; flex-direction: column; }
