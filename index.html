@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -52,6 +53,18 @@
     text-decoration: none; transition: background 0.2s;
   }
   .nav-cta:hover { background: var(--purple-mid); }
+  .nav-dropdown { position: relative; }
+  .nav-dropdown > a { display: flex; align-items: center; gap: 0.3rem; }
+  .nav-dropdown-menu {
+    display: none; position: absolute; top: calc(100% + 0.75rem); left: 50%;
+    transform: translateX(-50%);
+    background: var(--white); border: 0.5px solid var(--border); border-radius: 10px;
+    padding: 0.4rem; min-width: 190px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    z-index: 200;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu { display: flex; flex-direction: column; }
+  .nav-dropdown-menu a { font-size: 12px; color: var(--mid); padding: 0.5rem 0.9rem; border-radius: 6px; white-space: nowrap; display: block; text-decoration: none; transition: background 0.2s, color 0.2s; }
+  .nav-dropdown-menu a:hover { background: var(--bg); color: var(--black); }
 
   /* HERO */
   #hero {
@@ -367,7 +380,13 @@
   </a>
   <ul class="nav-links">
     <li class="hide-mobile"><a href="#about">about</a></li>
-    <li><a href="work.html">work</a></li>
+    <li class="nav-dropdown">
+      <a href="work.html">work <i class="ti ti-chevron-down" style="font-size:10px;"></i></a>
+      <div class="nav-dropdown-menu">
+        <a href="digital-marketing.html">digital marketing</a>
+        <a href="branding-advertising.html">brand &amp; advertising</a>
+      </div>
+    </li>
     <li class="hide-mobile"><a href="#awards">awards</a></li>
     <li><a href="#contact" class="nav-cta">say hi →</a></li>
   </ul>
@@ -437,7 +456,7 @@
   <h2 class="work-heading reveal">what i've made.</h2>
   <p class="work-sub reveal">pick a world.</p>
   <div class="work-bento reveal">
-    <a href="work.html#digital" class="work-tile work-tile-digital">
+    <a href="digital-marketing.html" class="work-tile work-tile-digital">
       <div class="work-tile-num">01</div>
       <div>
         <div class="work-tile-label">performance · seo · branding · aso</div>
@@ -445,7 +464,7 @@
         <div class="work-tile-arrow">explore →</div>
       </div>
     </a>
-    <a href="work.html#brand" class="work-tile work-tile-brand">
+    <a href="branding-advertising.html" class="work-tile work-tile-brand">
       <div class="work-tile-num">02</div>
       <div>
         <div class="work-tile-label">tv · radio · film · print · pitch</div>

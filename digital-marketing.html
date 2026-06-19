@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Marketing — Ajit Kumar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #f9f9f7; --white: #ffffff; --black: #0f0f0f; --mid: #666660;
+    --border: #e4e4e0;
+    --purple: #7c3aed; --purple-light: #f3e8ff; --purple-mid: #6d28d9; --purple-dark: #4c1d95;
+    --amber: #d97706; --amber-light: #fff7ed; --amber-dark: #7c2d12;
+    --green: #059669; --green-light: #ecfdf5;
+    --teal-light: #f0fdf9; --teal: #0d9488;
+    --slate-light: #eff6ff; --slate: #3b82f6;
+    --font: 'Inter', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--black); font-family: var(--font); font-weight: 400; line-height: 1.6; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.1rem 4rem;
+    background: rgba(249,249,247,0.92); backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+  .nav-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--purple); }
+  .nav-name { font-size: 14px; font-weight: 500; color: var(--black); letter-spacing: -0.01em; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links a { font-size: 13px; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--black); }
+  .nav-cta { background: var(--purple); color: #fff; font-size: 12px; font-weight: 500; letter-spacing: 0.03em; padding: 0.5rem 1.2rem; border-radius: 100px; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--purple-mid); }
+  .nav-dropdown { position: relative; }
+  .nav-dropdown > a { display: flex; align-items: center; gap: 0.3rem; }
+  .nav-dropdown-menu {
+    display: none; position: absolute; top: calc(100% + 0.75rem); left: 50%;
+    transform: translateX(-50%);
+    background: var(--white); border: 0.5px solid var(--border); border-radius: 10px;
+    padding: 0.4rem; min-width: 190px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    z-index: 200;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu { display: flex; flex-direction: column; }
+  .nav-dropdown-menu a { font-size: 12px; color: var(--mid); padding: 0.5rem 0.9rem; border-radius: 6px; white-space: nowrap; display: block; text-decoration: none; transition: background 0.2s, color 0.2s; }
+  .nav-dropdown-menu a:hover, .nav-dropdown-menu a.active { background: var(--bg); color: var(--black); }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding: 9rem 4rem 4rem; position: relative; overflow: hidden;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .page-header::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px; opacity: 0.4; pointer-events: none;
+  }
+  .page-header-inner { position: relative; z-index: 1; }
+  .page-header-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .pill { font-size: 11px; font-weight: 500; letter-spacing: 0.03em; padding: 0.3rem 0.9rem; border-radius: 100px; }
+  .pill-purple { background: var(--purple-light); color: var(--purple-mid); }
+  .pill-gray { background: #f1f0eb; color: var(--mid); border: 0.5px solid var(--border); }
+  .page-header-title { font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 600; letter-spacing: -0.04em; line-height: 0.95; color: var(--black); margin-bottom: 1rem; }
+  .page-header-title .muted { color: var(--mid); }
+  .page-header-sub { font-size: 15px; color: var(--mid); max-width: 500px; line-height: 1.7; }
+
+  /* SECTION WRAPPER */
+  .work-section { padding: 4rem; }
+
+  .section-label { display: flex; align-items: center; gap: 0.6rem; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 1rem; }
+  .section-label::before { content: ''; width: 16px; height: 2px; background: var(--purple); border-radius: 2px; }
+  .section-title { font-size: clamp(1.6rem, 3vw, 2.5rem); font-weight: 600; letter-spacing: -0.03em; color: var(--black); margin-bottom: 0.5rem; line-height: 1.1; }
+  .section-sub { font-size: 13px; color: var(--mid); margin-bottom: 2.5rem; }
+
+  /* DIGITAL TILES */
+  .digital-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .digital-tile { border-radius: 16px; overflow: hidden; background: var(--white); border: 0.5px solid var(--border); }
+  .digital-tile-header { cursor: pointer; }
+  .digital-tile-image { width: 100%; aspect-ratio: 4/3; position: relative; overflow: hidden; }
+  .digital-tile-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .digital-tile-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.05) 55%);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; gap: 0.3rem;
+  }
+  .digital-tile-label { font-size: 1.2rem; font-weight: 600; letter-spacing: -0.02em; color: #fff; }
+  .digital-tile-count { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); display: flex; align-items: center; gap: 0.4rem; }
+  .digital-tile-icon { font-size: 13px; color: rgba(255,255,255,0.6); transition: transform 0.3s; }
+  .digital-tile.open .digital-tile-icon { transform: rotate(180deg); }
+
+  .tile-placeholder { width: 100%; aspect-ratio: 4/3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; }
+  .tile-placeholder i { font-size: 40px; opacity: 0.4; }
+  .tile-placeholder-bottom { padding: 1rem 1.5rem; }
+  .tile-placeholder-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.3rem; }
+  .tile-placeholder-title { font-size: 1rem; font-weight: 600; color: var(--black); letter-spacing: -0.01em; }
+  .tile-placeholder-sub { font-size: 12px; color: var(--mid); margin-top: 0.2rem; }
+
+  .digital-tile-panel { display: none; padding: 1rem 1.5rem; border-top: 0.5px solid var(--border); }
+  .digital-tile.open .digital-tile-panel { display: block; }
+  .case-study-row { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 1rem; background: var(--bg); border-radius: 10px; text-decoration: none; margin-bottom: 0.6rem; transition: background 0.2s; }
+  .case-study-row:hover { background: var(--purple-light); }
+  .case-study-title { font-size: 13px; font-weight: 500; color: var(--black); }
+  .case-study-meta { font-size: 11px; color: var(--mid); margin-top: 0.2rem; }
+  .case-study-row i { font-size: 15px; color: var(--mid); flex-shrink: 0; margin-left: 1rem; }
+  .case-study-more { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); padding: 0.6rem 1rem; border: 0.5px dashed var(--border); border-radius: 10px; text-align: center; }
+
+  /* CTA */
+  .cta-section { padding: 6rem 4rem; background: var(--black); border-top: 0.5px solid var(--border); }
+  .cta-inner { display: flex; justify-content: space-between; align-items: center; gap: 4rem; flex-wrap: wrap; }
+  .cta-left h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; letter-spacing: -0.04em; color: #fff; line-height: 1.05; }
+  .cta-left h2 em { color: var(--purple); font-style: normal; }
+  .cta-left p { font-size: 14px; color: rgba(255,255,255,0.5); margin-top: 0.8rem; max-width: 380px; line-height: 1.7; }
+  .btn-cta { background: var(--purple); color: #fff; font-size: 13px; font-weight: 500; padding: 0.9rem 2.2rem; border-radius: 10px; text-decoration: none; white-space: nowrap; transition: background 0.2s; }
+  .btn-cta:hover { background: var(--purple-mid); }
+
+  /* FOOTER */
+  footer { padding: 1.5rem 4rem; background: var(--black); border-top: 0.5px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; }
+  footer p { font-size: 12px; color: rgba(255,255,255,0.3); }
+  footer a { color: rgba(255,255,255,0.3); text-decoration: none; font-size: 12px; transition: color 0.2s; }
+  footer a:hover { color: rgba(255,255,255,0.7); }
+  .footer-brand { display: flex; align-items: center; gap: 0.5rem; }
+  .footer-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--purple); opacity: 0.5; }
+  .footer-name { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.4); }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* LIGHTBOX */
+  .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; align-items: center; justify-content: center; }
+  .lightbox.open { display: flex; }
+  .lightbox-bg { position: absolute; inset: 0; background: rgba(0,0,0,0.92); cursor: zoom-out; }
+  .lightbox-close { position: absolute; top: 1.5rem; right: 1.5rem; z-index: 1001; background: rgba(255,255,255,0.12); border: none; color: #fff; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+  .lightbox-close:hover { background: rgba(255,255,255,0.22); }
+  .lightbox-img { position: relative; z-index: 1001; max-width: 92vw; max-height: 90vh; object-fit: contain; border-radius: 8px; box-shadow: 0 24px 64px rgba(0,0,0,0.5); }
+
+  @media (max-width: 960px) {
+    nav { padding: 1rem 2rem; }
+    .page-header, .work-section { padding-left: 2rem; padding-right: 2rem; }
+    .digital-grid { grid-template-columns: 1fr; }
+    .cta-section { padding: 4rem 2rem; }
+    .cta-inner { flex-direction: column; align-items: flex-start; gap: 2rem; }
+    footer { padding: 1.5rem 2rem; }
+  }
+  @media (max-width: 600px) {
+    nav { padding: 1rem 1.5rem; }
+    .page-header, .work-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    footer { flex-direction: column; gap: 0.8rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-dot"></div>
+    <span class="nav-name">ajit kumar</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">about</a></li>
+    <li class="nav-dropdown">
+      <a href="work.html" class="active">work <i class="ti ti-chevron-down" style="font-size:10px;"></i></a>
+      <div class="nav-dropdown-menu">
+        <a href="digital-marketing.html" class="active">digital marketing</a>
+        <a href="branding-advertising.html">brand &amp; advertising</a>
+      </div>
+    </li>
+    <li><a href="index.html#awards">awards</a></li>
+    <li><a href="index.html#contact" class="nav-cta">say hi →</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-header-pills">
+      <span class="pill pill-purple">digital marketing</span>
+      <span class="pill pill-gray">performance · seo · aso · branding</span>
+    </div>
+    <h1 class="page-header-title">digital<br><span class="muted">marketing.</span></h1>
+    <p class="page-header-sub">performance, branding, seo, and app growth — work that moved numbers.</p>
+  </div>
+</div>
+
+<div class="work-section">
+  <div class="section-label">Digital Marketing</div>
+  <h2 class="section-title reveal">Selected Work</h2>
+  <p class="section-sub reveal">click a tile to explore case studies.</p>
+
+  <div class="digital-grid">
+
+    <!-- Performance Marketing -->
+    <div class="digital-tile reveal">
+      <div class="digital-tile-header" onclick="toggleDigital(this)">
+        <div class="digital-tile-image" style="background-image: url('Performance marketing cover.png'); background-size: cover; background-position: center;">
+          <div class="digital-tile-overlay">
+            <span class="digital-tile-label">Performance Marketing</span>
+            <span class="digital-tile-count">1 case study <i class="ti ti-chevron-down digital-tile-icon" aria-hidden="true"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="digital-tile-panel">
+        <a href="bobcard-performance.html" class="case-study-row">
+          <div>
+            <div class="case-study-title">BOBCARD Performance Marketing Campaign</div>
+            <div class="case-study-meta">68% CAC reduction · 800 cards/month · 10 months</div>
+          </div>
+          <i class="ti ti-arrow-right" aria-hidden="true"></i>
+        </a>
+        <div class="case-study-more">+ more coming soon</div>
+      </div>
+    </div>
+
+    <!-- Branding Campaign -->
+    <div class="digital-tile reveal">
+      <div class="tile-placeholder" style="background: linear-gradient(135deg, #e8f0e8 0%, #c8dcd0 100%);">
+        <i class="ti ti-speakerphone" style="font-size:44px; color:#7a9a84;"></i>
+      </div>
+      <div class="tile-placeholder-bottom">
+        <div class="tile-placeholder-label">Branding Campaign</div>
+        <div class="tile-placeholder-title">Branding Campaign</div>
+        <div class="tile-placeholder-sub">coming soon</div>
+      </div>
+    </div>
+
+    <!-- SEO Growth -->
+    <div class="digital-tile reveal">
+      <div class="tile-placeholder" style="background: linear-gradient(135deg, #eaecf8 0%, #d0d4f0 100%);">
+        <i class="ti ti-search" style="font-size:44px; color:#7a80c0;"></i>
+      </div>
+      <div class="tile-placeholder-bottom">
+        <div class="tile-placeholder-label">SEO Growth</div>
+        <div class="tile-placeholder-title">SEO Growth</div>
+        <div class="tile-placeholder-sub">coming soon</div>
+      </div>
+    </div>
+
+    <!-- App ASO -->
+    <div class="digital-tile reveal">
+      <div class="digital-tile-header" onclick="toggleDigital(this)">
+        <div class="tile-placeholder" style="background: linear-gradient(135deg, #f4ede8 0%, #e8d8d0 100%); cursor:pointer;">
+          <i class="ti ti-device-mobile" style="font-size:44px; color:#b08070;"></i>
+          <div style="text-align:center;">
+            <div style="font-size:13px; font-weight:600; color:#7c2d12; letter-spacing:-0.01em;">App ASO</div>
+            <div style="font-size:11px; color:#9a6050; margin-top:0.2rem; display:flex; align-items:center; justify-content:center; gap:0.3rem;">1 case study <i class="ti ti-chevron-down digital-tile-icon" aria-hidden="true" style="font-size:12px;"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="digital-tile-panel">
+        <a href="bobcard-aso.html" class="case-study-row">
+          <div>
+            <div class="case-study-title">BOBCARD App ASO — Improving App Ratings</div>
+            <div class="case-study-meta">1,578 reviews · 90% response rate · 4+ rating</div>
+          </div>
+          <i class="ti ti-arrow-right" aria-hidden="true"></i>
+        </a>
+        <div class="case-study-more">+ more coming soon</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-left">
+      <h2>like what<br>you <em>see?</em></h2>
+      <p>open to senior roles, consulting engagements, and interesting briefs.</p>
+    </div>
+    <a href="index.html#contact" class="btn-cta">get in touch →</a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 ajit kumar</p>
+  <div class="footer-brand"><div class="footer-dot"></div><span class="footer-name">notpapaya</span></div>
+  <a href="work.html">← back to work</a>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+  <div class="lightbox-bg" onclick="closeLightbox()"></div>
+  <button class="lightbox-close" onclick="closeLightbox()"><i class="ti ti-x"></i></button>
+  <img src="" alt="" class="lightbox-img">
+</div>
+
+<script>
+  function toggleDigital(el) {
+    const tile = el.closest('.digital-tile');
+    const isOpen = tile.classList.contains('open');
+    document.querySelectorAll('.digital-tile.open').forEach(t => t.classList.remove('open'));
+    if (!isOpen) tile.classList.add('open');
+  }
+
+  function openLightbox(src, alt) {
+    const lb = document.getElementById('lightbox');
+    lb.querySelector('.lightbox-img').src = src;
+    lb.querySelector('.lightbox-img').alt = alt || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
