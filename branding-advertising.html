@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand &amp; Advertising — Ajit Kumar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #f9f9f7; --white: #ffffff; --black: #0f0f0f; --mid: #666660;
+    --border: #e4e4e0;
+    --purple: #7c3aed; --purple-light: #f3e8ff; --purple-mid: #6d28d9; --purple-dark: #4c1d95;
+    --amber: #d97706; --amber-light: #fff7ed; --amber-dark: #7c2d12;
+    --green: #059669; --green-light: #ecfdf5;
+    --teal-light: #f0fdf9; --teal: #0d9488;
+    --slate-light: #eff6ff; --slate: #3b82f6;
+    --font: 'Inter', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--black); font-family: var(--font); font-weight: 400; line-height: 1.6; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.1rem 4rem;
+    background: rgba(249,249,247,0.92); backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+  .nav-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--purple); }
+  .nav-name { font-size: 14px; font-weight: 500; color: var(--black); letter-spacing: -0.01em; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links a { font-size: 13px; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--black); }
+  .nav-cta { background: var(--purple); color: #fff; font-size: 12px; font-weight: 500; letter-spacing: 0.03em; padding: 0.5rem 1.2rem; border-radius: 100px; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--purple-mid); }
+  .nav-dropdown { position: relative; }
+  .nav-dropdown > a { display: flex; align-items: center; gap: 0.3rem; }
+  .nav-dropdown-menu {
+    display: none; position: absolute; top: calc(100% + 0.75rem); left: 50%;
+    transform: translateX(-50%);
+    background: var(--white); border: 0.5px solid var(--border); border-radius: 10px;
+    padding: 0.4rem; min-width: 190px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    z-index: 200;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu { display: flex; flex-direction: column; }
+  .nav-dropdown-menu a { font-size: 12px; color: var(--mid); padding: 0.5rem 0.9rem; border-radius: 6px; white-space: nowrap; display: block; text-decoration: none; transition: background 0.2s, color 0.2s; }
+  .nav-dropdown-menu a:hover, .nav-dropdown-menu a.active { background: var(--bg); color: var(--black); }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding: 9rem 4rem 4rem; position: relative; overflow: hidden;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .page-header::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px; opacity: 0.4; pointer-events: none;
+  }
+  .page-header-inner { position: relative; z-index: 1; }
+  .page-header-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .pill { font-size: 11px; font-weight: 500; letter-spacing: 0.03em; padding: 0.3rem 0.9rem; border-radius: 100px; }
+  .pill-amber { background: var(--amber-light); color: #9a3412; }
+  .pill-gray { background: #f1f0eb; color: var(--mid); border: 0.5px solid var(--border); }
+  .page-header-title { font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 600; letter-spacing: -0.04em; line-height: 0.95; color: var(--black); margin-bottom: 1rem; }
+  .page-header-title .muted { color: var(--mid); }
+  .page-header-sub { font-size: 15px; color: var(--mid); max-width: 500px; line-height: 1.7; }
+
+  /* SECTION WRAPPER */
+  .work-section { padding: 4rem; }
+
+  .section-label { display: flex; align-items: center; gap: 0.6rem; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 1rem; }
+  .section-label::before { content: ''; width: 16px; height: 2px; background: var(--purple); border-radius: 2px; }
+  .section-title { font-size: clamp(1.6rem, 3vw, 2.5rem); font-weight: 600; letter-spacing: -0.03em; color: var(--black); margin-bottom: 0.5rem; line-height: 1.1; }
+  .section-sub { font-size: 13px; color: var(--mid); margin-bottom: 2.5rem; }
+
+  /* BRAND ACCORDION */
+  .brand-list { display: flex; flex-direction: column; gap: 0.5px; background: var(--border); border-radius: 16px; overflow: hidden; }
+  .brand-item { background: var(--white); border-left: 3px solid var(--brand-color, var(--border)); transition: border-left-color 0.3s; }
+
+  .brand-trigger {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.6rem 2rem; cursor: pointer; user-select: none;
+    transition: background 0.2s;
+  }
+  .brand-trigger:hover { background: var(--bg); }
+  .brand-trigger-left { display: flex; align-items: center; gap: 1.2rem; }
+  .brand-number { font-size: 11px; color: var(--mid); letter-spacing: 0.1em; min-width: 24px; }
+  .brand-name { font-size: clamp(1.2rem, 2.5vw, 1.8rem); font-weight: 600; letter-spacing: -0.02em; color: var(--black); line-height: 1; transition: color 0.2s; }
+  .brand-item.open .brand-name { color: var(--brand-color, var(--purple)); }
+
+  .brand-trigger-right { display: flex; align-items: center; gap: 1rem; }
+  .brand-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: flex-end; }
+  .brand-pill { font-size: 10px; font-weight: 500; letter-spacing: 0.03em; padding: 0.25rem 0.7rem; border-radius: 100px; background: var(--bg); color: var(--mid); border: 0.5px solid var(--border); }
+  .brand-arrow { width: 32px; height: 32px; border: 0.5px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; transition: transform 0.3s, background 0.2s; flex-shrink: 0; }
+  .brand-arrow i { font-size: 14px; color: var(--mid); transition: color 0.2s; }
+  .brand-item.open .brand-arrow { transform: rotate(180deg); background: var(--purple-light); border-color: #c4b5fd; }
+  .brand-item.open .brand-arrow i { color: var(--purple); }
+
+  .brand-panel { display: none; padding: 0 2rem 2rem; }
+  .brand-item.open .brand-panel { display: block; }
+
+  /* PANEL CONTENT */
+  .panel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 1rem; }
+  .panel-card { background: var(--bg); border-radius: 12px; overflow: hidden; border: 0.5px solid var(--border); }
+  .panel-video { width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #000; border-radius: 12px; }
+  .panel-video iframe { width: 100%; height: 100%; display: block; }
+  .panel-image { width: 100%; aspect-ratio: 4/3; overflow: hidden; border-radius: 12px; position: relative; }
+  .panel-image img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; transition: transform 0.3s; }
+  .panel-image img:hover { transform: scale(1.03); }
+  .panel-image-hint { position: absolute; bottom: 0.6rem; right: 0.6rem; background: rgba(0,0,0,0.55); color: #fff; font-size: 10px; padding: 0.2rem 0.5rem; border-radius: 4px; pointer-events: none; display: flex; align-items: center; gap: 0.3rem; }
+  .panel-card-placeholder { aspect-ratio: 4/3; background: var(--purple-light); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; }
+  .panel-card-placeholder i { font-size: 28px; color: var(--purple); opacity: 0.4; }
+  .panel-card-placeholder span { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); opacity: 0.6; }
+  .panel-info { padding: 1rem; font-size: 12px; color: var(--mid); line-height: 1.6; }
+  .panel-info strong { color: var(--black); font-weight: 500; display: block; margin-bottom: 0.2rem; font-size: 13px; }
+  .panel-pdf { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.8rem; font-size: 11px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: var(--purple); text-decoration: none; border-bottom: 1px solid #c4b5fd; padding-bottom: 0.1rem; transition: color 0.2s; }
+  .panel-pdf:hover { color: var(--purple-dark); }
+
+  /* AUDIO */
+  .panel-audio { background: var(--bg); border-radius: 12px; padding: 1.2rem 1.5rem; margin-top: 0.8rem; border: 0.5px solid var(--border); }
+  .panel-audio-title { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 0.8rem; }
+  .audio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+  .audio-item { display: flex; flex-direction: column; gap: 0.25rem; }
+  .audio-label { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); }
+  .audio-item audio { width: 100%; height: 28px; accent-color: var(--purple); }
+
+  /* CTA */
+  .cta-section { padding: 6rem 4rem; background: var(--black); border-top: 0.5px solid var(--border); }
+  .cta-inner { display: flex; justify-content: space-between; align-items: center; gap: 4rem; flex-wrap: wrap; }
+  .cta-left h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; letter-spacing: -0.04em; color: #fff; line-height: 1.05; }
+  .cta-left h2 em { color: var(--purple); font-style: normal; }
+  .cta-left p { font-size: 14px; color: rgba(255,255,255,0.5); margin-top: 0.8rem; max-width: 380px; line-height: 1.7; }
+  .btn-cta { background: var(--purple); color: #fff; font-size: 13px; font-weight: 500; padding: 0.9rem 2.2rem; border-radius: 10px; text-decoration: none; white-space: nowrap; transition: background 0.2s; }
+  .btn-cta:hover { background: var(--purple-mid); }
+
+  /* FOOTER */
+  footer { padding: 1.5rem 4rem; background: var(--black); border-top: 0.5px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; }
+  footer p { font-size: 12px; color: rgba(255,255,255,0.3); }
+  footer a { color: rgba(255,255,255,0.3); text-decoration: none; font-size: 12px; transition: color 0.2s; }
+  footer a:hover { color: rgba(255,255,255,0.7); }
+  .footer-brand { display: flex; align-items: center; gap: 0.5rem; }
+  .footer-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--purple); opacity: 0.5; }
+  .footer-name { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.4); }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* LIGHTBOX */
+  .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; align-items: center; justify-content: center; }
+  .lightbox.open { display: flex; }
+  .lightbox-bg { position: absolute; inset: 0; background: rgba(0,0,0,0.92); cursor: zoom-out; }
+  .lightbox-close { position: absolute; top: 1.5rem; right: 1.5rem; z-index: 1001; background: rgba(255,255,255,0.12); border: none; color: #fff; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+  .lightbox-close:hover { background: rgba(255,255,255,0.22); }
+  .lightbox-img { position: relative; z-index: 1001; max-width: 92vw; max-height: 90vh; object-fit: contain; border-radius: 8px; box-shadow: 0 24px 64px rgba(0,0,0,0.5); }
+
+  @media (max-width: 960px) {
+    nav { padding: 1rem 2rem; }
+    .page-header, .work-section { padding-left: 2rem; padding-right: 2rem; }
+    .panel-grid { grid-template-columns: 1fr 1fr; }
+    .brand-tags { display: none; }
+    .cta-section { padding: 4rem 2rem; }
+    .cta-inner { flex-direction: column; align-items: flex-start; gap: 2rem; }
+    footer { padding: 1.5rem 2rem; }
+  }
+  @media (max-width: 600px) {
+    nav { padding: 1rem 1.5rem; }
+    .page-header, .work-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .panel-grid { grid-template-columns: 1fr; }
+    .audio-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.8rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-dot"></div>
+    <span class="nav-name">ajit kumar</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">about</a></li>
+    <li class="nav-dropdown">
+      <a href="work.html" class="active">work <i class="ti ti-chevron-down" style="font-size:10px;"></i></a>
+      <div class="nav-dropdown-menu">
+        <a href="digital-marketing.html">digital marketing</a>
+        <a href="branding-advertising.html" class="active">brand &amp; advertising</a>
+      </div>
+    </li>
+    <li><a href="index.html#awards">awards</a></li>
+    <li><a href="index.html#contact" class="nav-cta">say hi →</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-header-pills">
+      <span class="pill pill-amber">brand &amp; advertising</span>
+      <span class="pill pill-gray">tv · radio · digital · 12 brands</span>
+    </div>
+    <h1 class="page-header-title">brand &amp;<br><span class="muted">advertising.</span></h1>
+    <p class="page-header-sub">tv. radio. digital. twelve years of briefs, ideas, and campaigns that shipped.</p>
+  </div>
+</div>
+
+<div class="work-section">
+  <div class="section-label">Brand &amp; Advertising</div>
+  <h2 class="section-title reveal">Selected Work</h2>
+  <p class="section-sub reveal">click any brand to explore the work.</p>
+
+  <div class="brand-list">
+
+    <!-- BOBCARD -->
+    <div class="brand-item reveal" style="--brand-color: #F26522;">
+      <div class="brand-trigger" onclick="toggleBrand(this)">
+        <div class="brand-trigger-left"><span class="brand-number">01</span><span class="brand-name">BOBCARD</span></div>
+        <div class="brand-trigger-right">
+          <div class="brand-tags"><span class="brand-pill">Social</span><span class="brand-pill">Digital</span><span class="brand-pill">BFSI</span></div>
+          <div class="brand-arrow"><i class="ti ti-chevron-down" aria-hidden="true"></i></div>
+        </div>
+      </div>
+      <div class="brand-panel">
+        <div class="panel-grid">
+          <div class="panel-card">
+            <div class="panel-image">
+              <img src="BOBCARD.png" alt="BOBCARD Campaign" onclick="openLightbox(this.src, this.alt)">
+              <div class="panel-image-hint"><i class="ti ti-zoom-in" style="font-size:10px;"></i> view full</div>
+            </div>
+            <div class="panel-info"><strong>BOBCARD Launch Campaign</strong>Social media campaign strategy &amp; creative direction.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POLICYBAZAAR -->
+    <div class="brand-item reveal" style="--brand-color: #00a6e2;">
+      <div class="brand-trigger" onclick="toggleBrand(this)">
+        <div class="brand-trigger-left"><span class="brand-number">02</span><span class="brand-name">Policybazaar</span></div>
+        <div class="brand-trigger-right">
+          <div class="brand-tags"><span class="brand-pill">Digital Film</span><span class="brand-pill">Gold Award</span></div>
+          <div class="brand-arrow"><i class="ti ti-chevron-down" aria-hidden="true"></i></div>
+        </div>
+      </div>
+      <div class="brand-panel">
+        <div class="panel-grid">
+          <div class="panel-card">
+            <div class="panel-video"><iframe src="https://www.youtube.com/embed/x-SFnQiMcyQ" title="Policybazaar Ad Film" frameborder="0" allowfullscreen></iframe></div>
+            <div class="panel-info"><strong>Policybazaar Digital Film</strong>Gold CMO Asia Award — Best Digital Campaign.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- L&T REALTY -->
+    <div class="brand-item reveal" style="--brand-color: #FFC72C;">
+      <div class="brand-trigger" onclick="toggleBrand(this)">
+        <div class="brand-trigger-left"><span class="brand-number">03</span><span class="brand-name">L&amp;T Realty</span></div>
+        <div class="brand-trigger-right">
+          <div class="brand-tags"><span class="brand-pill">Video Ad</span><span class="brand-pill">Radio</span></div>
+          <div class="brand-arrow"><i class="ti ti-chevron-down" aria-hidden="true"></i></div>
+        </div>
+      </div>
+      <div class="brand-panel">
+        <div class="panel-grid">
+          <div class="panel-card">
+            <div class="panel-video"><iframe src="https://www.youtube.com/embed/naj-2yy1Xj8" title="L&amp;T Realty" frameborder="0" allowfullscreen></iframe></div>
+            <div class="panel-info"><strong>L&amp;T Realty Video Ad</strong>TV/digital film — concept &amp; script.</div>
+          </div>
+        </div>
+        <div class="panel-audio">
+          <div class="panel-audio-title">Radio Spots</div>
+          <div class="audio-grid">
+            <div class="audio-item"><span class="audio-label">Baba</span><audio controls src="Baba - L&T Realty Radio ad.mp3"></audio></div>
+            <div class="audio-item"><span class="audio-label">World Tour</span><audio controls src="World Tour - L&T Realty Radio ad.mp3"></audio></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPAREMUNAFA -->
+    <div class="brand-item reveal" style="--brand-color: #D0021B;">
+      <div class="brand-trigger" onclick="toggleBrand(this)">
+        <div class="brand-trigger-left"><span class="brand-number">04</span><span class="brand-name">CompareMunafa</span></div>
+        <div class="brand-trigger-right">
+          <div class="brand-tags"><span class="brand-pill">Video Ad</span><span class="brand-pill">Radio</span></div>
+          <div class="brand-arrow"><i class="ti ti-chevron-down" aria-hidden="true"></i></div>
+        </div>
+      </div>
+      <div class="brand-panel">
+        <div class="panel-grid">
+          <div class="panel-card">
+            <div class="panel-video"><iframe src="https://www.youtube.com/embed/Ne7c_iMTS7Q" title="CompareMunafa" frameborder="0" allowfullscreen></iframe></div>
+            <div class="panel-info"><strong>CompareMunafa Brand Film</strong>Brand campaign — concept, script &amp; direction.</div>
+          </div>
+        </div>
+        <div class="panel-audio">
+          <div class="panel-audio-title">Radio Spots</div>
+          <div class="audio-grid">
+            <div class="audio-item"><span class="audio-label">Laloo Ji</span><audio controls src="CompareMunafa Laloo Ji.mp3"></audio></div>
+            <div class="audio-item"><span class="audio-label">Mamta Didi</span><audio controls src="CompareMunafa Mamta Didi.mp3"></audio></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMIO -->
+    <div class="brand-item reveal" style="--brand-color: #6c2d9a;">
+      <div class="brand-trigger" onclick="toggleBrand(this)">
+        <div class="brand-trigger-left"><span class="brand-number">05</span><span class="brand-name">Comio</span></div>
+        <div class="brand-trigger-right">
+          <div class="brand-tags"><span class="brand-pill">Video Ads</span><span class="brand-pill">Mobile</span></div>
+          <div class="brand-arrow"><i class="ti ti-chevron-down" aria-hidden="true"></i></div>
+        </div>
+      </div>
+      <div class="brand-panel">
+        <div class="panel-grid">
+          <div class="panel-card">
+            <div class="panel-video"><iframe src="https://www.youtube.com/embed/JrFuJjYopk0" title="Comio Rickshawwali" frameborder="0" allowfullscreen></iframe></div>
+            <div class="panel-info"><strong>Rickshawwali</strong>Mobile brand ad film.</div>
+          </div>
+          <div class="panel-card">
+            <div class="panel-video"><iframe src="https://www.youtube.com/embed/DfGUTZ-7dQI" title="Comio Shraddha Sharma" frameborder="0" allowfullscreen></iframe></div>
+            <div class="panel-info"><strong>Shraddha Sharma</strong>Mobile brand ad film.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FS -->
+    <div class="brand-item reveal" style="--brand-color: #1a6b5c;">
+      <div class="brand-trigger" onclick="toggleBrand(this)">
+        <div class="brand-trigger-left"><span class="brand-number">06</span><span class="brand-name">FS</span></div>
+        <div class="brand-trigger-right">
+          <div class="brand-tags"><span class="brand-pill">AV Film</span><span class="brand-pill">Radio</span></div>
+          <div class="brand-arrow"><i class="ti ti-chevron-down" aria-hidden="true"></i></div>
+        </div>
+      </div>
+      <div class="brand-panel">
+        <div class="panel-grid">
+          <div class="panel-card">
+            <div class="panel-video"><iframe src="https://www.youtube.com/embed/YcwgXhtM8CU" title="FS Kashmir AV" frameborder="0" allowfullscreen></iframe></div>
+            <div class="panel-info"><strong>Kashmir AV — Self Made</strong>Script, direction &amp; edit.</div>
+          </div>
+          <div class="panel-card">
+            <div class="panel-video"><iframe src="https://www.youtube.com/embed/m1GgB6kr_z0" title="FS Kashmir Video Ad" frameborder="0" allowfullscreen></iframe></div>
+            <div class="panel-info"><strong>Kashmir Video Ad</strong>Brand film — concept &amp; script.</div>
+          </div>
+        </div>
+        <div class="panel-audio">
+          <div class="panel-audio-title">Radio Spots</div>
+          <div class="audio-grid">
+            <div class="audio-item"><span class="audio-label">Gori Mem</span><audio controls src="Shanky Mirza- Gori Mem - FS Spot.mp3"></audio></div>
+            <div class="audio-item"><span class="audio-label">DJ Papa</span><audio controls src="Shanky Mirza- DJ Papa - FS Spot.mp3"></audio></div>
+            <div class="audio-item"><span class="audio-label">Dal Lake</span><audio controls src="Shanky Mirza- Dal Lake - FS Spot.mp3"></audio></div>
+            <div class="audio-item"><span class="audio-label">Nakool</span><audio controls src="Nakool- FS Spot.mp3"></audio></div>
+            <div class="audio-item"><span class="audio-label">Badi Crush</span><audio controls src="Chikloo Chauhan- Badi Crush - FS Spot.mp3"></audio></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SNAPDEAL -->
+    <div class="brand-item reveal" style="--brand-color: #C00309;">
+      <div class="brand-trigger" onclick="toggleBrand(this)">
+        <div class="brand-trigger-left"><span class="brand-number">07</span><span class="brand-name">Snapdeal</span></div>
+        <div class="brand-trigger-right">
+          <div class="brand-tags"><span class="brand-pill">AV</span><span class="brand-pill">Pitch Work</span></div>
+          <div class="brand-arrow"><i class="ti ti-chevron-down" aria-hidden="true"></i></div>
+        </div>
+      </div>
+      <div class="brand-panel">
+        <div class="panel-grid">
+          <div class="panel-card">
+            <div class="panel-video"><iframe src="https://www.youtube.com/embed/isADsWDhwn8" title="Snapdeal Pitch AV" frameborder="0" allowfullscreen></iframe></div>
+            <div class="panel-info"><strong>Snapdeal Pitch AV</strong>New business pitch — digital AV concept &amp; script.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REEBOK -->
+    <div class="brand-item reveal" style="--brand-color: #111111;">
+      <div class="brand-trigger" onclick="toggleBrand(this)">
+        <div class="brand-trigger-left"><span class="brand-number">08</span><span class="brand-name">Reebok</span></div>
+        <div class="brand-trigger-right">
+          <div class="brand-tags"><span class="brand-pill">Pitch</span><span class="brand-pill">Sports</span></div>
+          <div class="brand-arrow"><i class="ti ti-chevron-down" aria-hidden="true"></i></div>
+        </div>
+      </div>
+      <div class="brand-panel">
+        <div class="panel-grid">
+          <div class="panel-card">
+            <div class="panel-card-placeholder"><i class="ti ti-presentation" aria-hidden="true"></i><span>Upload Cover</span></div>
+            <div class="panel-info"><strong>Reebok Pitch Work</strong>Brand campaign concept &amp; creative direction.<br><a href="reebok.pdf" target="_blank" class="panel-pdf">view presentation →</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CRUSH -->
+    <div class="brand-item reveal" style="--brand-color: #0096FF;">
+      <div class="brand-trigger" onclick="toggleBrand(this)">
+        <div class="brand-trigger-left"><span class="brand-number">09</span><span class="brand-name">Crush</span></div>
+        <div class="brand-trigger-right">
+          <div class="brand-tags"><span class="brand-pill">Brand</span><span class="brand-pill">Campaign</span></div>
+          <div class="brand-arrow"><i class="ti ti-chevron-down" aria-hidden="true"></i></div>
+        </div>
+      </div>
+      <div class="brand-panel">
+        <div class="panel-grid">
+          <div class="panel-card">
+            <div class="panel-card-placeholder"><i class="ti ti-presentation" aria-hidden="true"></i><span>Upload Cover</span></div>
+            <div class="panel-info"><strong>Crush</strong>Brand campaign work.<br><a href="crush.pdf" target="_blank" class="panel-pdf">view presentation →</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UNYSCAPE -->
+    <div class="brand-item reveal" style="--brand-color: #3D5A80;">
+      <div class="brand-trigger" onclick="toggleBrand(this)">
+        <div class="brand-trigger-left"><span class="brand-number">10</span><span class="brand-name">Unyscape</span></div>
+        <div class="brand-trigger-right">
+          <div class="brand-tags"><span class="brand-pill">Brand</span><span class="brand-pill">Campaign</span></div>
+          <div class="brand-arrow"><i class="ti ti-chevron-down" aria-hidden="true"></i></div>
+        </div>
+      </div>
+      <div class="brand-panel">
+        <div class="panel-grid">
+          <div class="panel-card">
+            <div class="panel-card-placeholder"><i class="ti ti-presentation" aria-hidden="true"></i><span>Upload Cover</span></div>
+            <div class="panel-info"><strong>Unyscape</strong>Brand campaign work.<br><a href="unyscape.pdf" target="_blank" class="panel-pdf">view presentation →</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VASU KKT -->
+    <div class="brand-item reveal" style="--brand-color: #2E7D32;">
+      <div class="brand-trigger" onclick="toggleBrand(this)">
+        <div class="brand-trigger-left"><span class="brand-number">11</span><span class="brand-name">Vasu KKT</span></div>
+        <div class="brand-trigger-right">
+          <div class="brand-tags"><span class="brand-pill">Brand</span><span class="brand-pill">Campaign</span></div>
+          <div class="brand-arrow"><i class="ti ti-chevron-down" aria-hidden="true"></i></div>
+        </div>
+      </div>
+      <div class="brand-panel">
+        <div class="panel-grid">
+          <div class="panel-card">
+            <div class="panel-card-placeholder"><i class="ti ti-presentation" aria-hidden="true"></i><span>Upload Cover</span></div>
+            <div class="panel-info"><strong>Vasu KKT</strong>Brand campaign work.<br><a href="vasukkt.pdf" target="_blank" class="panel-pdf">view presentation →</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WITLINGER -->
+    <div class="brand-item reveal" style="--brand-color: #7B2D42;">
+      <div class="brand-trigger" onclick="toggleBrand(this)">
+        <div class="brand-trigger-left"><span class="brand-number">12</span><span class="brand-name">Witlinger</span></div>
+        <div class="brand-trigger-right">
+          <div class="brand-tags"><span class="brand-pill">Brand</span><span class="brand-pill">Campaign</span></div>
+          <div class="brand-arrow"><i class="ti ti-chevron-down" aria-hidden="true"></i></div>
+        </div>
+      </div>
+      <div class="brand-panel">
+        <div class="panel-grid">
+          <div class="panel-card">
+            <div class="panel-card-placeholder"><i class="ti ti-presentation" aria-hidden="true"></i><span>Upload Cover</span></div>
+            <div class="panel-info"><strong>Witlinger</strong>Brand campaign work.<br><a href="witlinger.pdf" target="_blank" class="panel-pdf">view presentation →</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-left">
+      <h2>like what<br>you <em>see?</em></h2>
+      <p>open to senior roles, consulting engagements, and interesting briefs.</p>
+    </div>
+    <a href="index.html#contact" class="btn-cta">get in touch →</a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 ajit kumar</p>
+  <div class="footer-brand"><div class="footer-dot"></div><span class="footer-name">notpapaya</span></div>
+  <a href="work.html">← back to work</a>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+  <div class="lightbox-bg" onclick="closeLightbox()"></div>
+  <button class="lightbox-close" onclick="closeLightbox()"><i class="ti ti-x"></i></button>
+  <img src="" alt="" class="lightbox-img">
+</div>
+
+<script>
+  function toggleBrand(trigger) {
+    const item = trigger.closest('.brand-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.brand-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  function openLightbox(src, alt) {
+    const lb = document.getElementById('lightbox');
+    lb.querySelector('.lightbox-img').src = src;
+    lb.querySelector('.lightbox-img').alt = alt || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
