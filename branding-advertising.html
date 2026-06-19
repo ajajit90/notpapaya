@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brand &amp; Advertising — Ajit Kumar</title>
+<title>Brand & Advertising — Ajit Kumar</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -14,16 +14,11 @@
     --bg: #f9f9f7; --white: #ffffff; --black: #0f0f0f; --mid: #666660;
     --border: #e4e4e0;
     --purple: #7c3aed; --purple-light: #f3e8ff; --purple-mid: #6d28d9; --purple-dark: #4c1d95;
-    --amber: #d97706; --amber-light: #fff7ed; --amber-dark: #7c2d12;
-    --green: #059669; --green-light: #ecfdf5;
-    --teal-light: #f0fdf9; --teal: #0d9488;
-    --slate-light: #eff6ff; --slate: #3b82f6;
     --font: 'Inter', sans-serif;
   }
   html { scroll-behavior: smooth; }
   body { background: var(--bg); color: var(--black); font-family: var(--font); font-weight: 400; line-height: 1.6; overflow-x: hidden; }
 
-  /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; justify-content: space-between; align-items: center;
@@ -34,29 +29,13 @@
   .nav-brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
   .nav-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--purple); }
   .nav-name { font-size: 14px; font-weight: 500; color: var(--black); letter-spacing: -0.01em; }
-  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links { display: flex; gap: 1.8rem; list-style: none; align-items: center; }
   .nav-links a { font-size: 13px; color: var(--mid); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover, .nav-links a.active { color: var(--black); }
   .nav-cta { background: var(--purple); color: #fff; font-size: 12px; font-weight: 500; letter-spacing: 0.03em; padding: 0.5rem 1.2rem; border-radius: 100px; text-decoration: none; transition: background 0.2s; }
   .nav-cta:hover { background: var(--purple-mid); }
-  .nav-dropdown { position: relative; }
-  .nav-dropdown > a { display: flex; align-items: center; gap: 0.3rem; }
-  .nav-dropdown-menu {
-    display: none; position: absolute; top: calc(100% + 0.75rem); left: 50%;
-    transform: translateX(-50%);
-    background: var(--white); border: 0.5px solid var(--border); border-radius: 10px;
-    padding: 0.4rem; min-width: 190px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    z-index: 200;
-  }
-  .nav-dropdown:hover .nav-dropdown-menu { display: flex; flex-direction: column; }
-  .nav-dropdown-menu a { font-size: 12px; color: var(--mid); padding: 0.5rem 0.9rem; border-radius: 6px; white-space: nowrap; display: block; text-decoration: none; transition: background 0.2s, color 0.2s; }
-  .nav-dropdown-menu a:hover, .nav-dropdown-menu a.active { background: var(--bg); color: var(--black); }
 
-  /* PAGE HEADER */
-  .page-header {
-    padding: 9rem 4rem 4rem; position: relative; overflow: hidden;
-    border-bottom: 0.5px solid var(--border);
-  }
+  .page-header { padding: 9rem 4rem 4rem; position: relative; overflow: hidden; border-bottom: 0.5px solid var(--border); }
   .page-header::before {
     content: ''; position: absolute; inset: 0;
     background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
@@ -65,21 +44,17 @@
   .page-header-inner { position: relative; z-index: 1; }
   .page-header-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
   .pill { font-size: 11px; font-weight: 500; letter-spacing: 0.03em; padding: 0.3rem 0.9rem; border-radius: 100px; }
-  .pill-amber { background: var(--amber-light); color: #9a3412; }
+  .pill-amber { background: #fff7ed; color: #9a3412; }
   .pill-gray { background: #f1f0eb; color: var(--mid); border: 0.5px solid var(--border); }
   .page-header-title { font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 600; letter-spacing: -0.04em; line-height: 0.95; color: var(--black); margin-bottom: 1rem; }
   .page-header-title .muted { color: var(--mid); }
   .page-header-sub { font-size: 15px; color: var(--mid); max-width: 500px; line-height: 1.7; }
 
-  /* SECTION WRAPPER */
   .work-section { padding: 4rem; }
-
   .section-label { display: flex; align-items: center; gap: 0.6rem; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 1rem; }
   .section-label::before { content: ''; width: 16px; height: 2px; background: var(--purple); border-radius: 2px; }
-  .section-title { font-size: clamp(1.6rem, 3vw, 2.5rem); font-weight: 600; letter-spacing: -0.03em; color: var(--black); margin-bottom: 0.5rem; line-height: 1.1; }
   .section-sub { font-size: 13px; color: var(--mid); margin-bottom: 2.5rem; }
 
-  /* BRAND ACCORDION */
   .brand-list { display: flex; flex-direction: column; gap: 0.5px; background: var(--border); border-radius: 16px; overflow: hidden; }
   .brand-item { background: var(--white); border-left: 3px solid var(--brand-color, var(--border)); transition: border-left-color 0.3s; }
 
@@ -105,15 +80,12 @@
   .brand-panel { display: none; padding: 0 2rem 2rem; }
   .brand-item.open .brand-panel { display: block; }
 
-  /* PANEL CONTENT */
   .panel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 1rem; }
   .panel-card { background: var(--bg); border-radius: 12px; overflow: hidden; border: 0.5px solid var(--border); }
   .panel-video { width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #000; border-radius: 12px; }
   .panel-video iframe { width: 100%; height: 100%; display: block; }
-  .panel-image { width: 100%; aspect-ratio: 4/3; overflow: hidden; border-radius: 12px; position: relative; }
-  .panel-image img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; transition: transform 0.3s; }
-  .panel-image img:hover { transform: scale(1.03); }
-  .panel-image-hint { position: absolute; bottom: 0.6rem; right: 0.6rem; background: rgba(0,0,0,0.55); color: #fff; font-size: 10px; padding: 0.2rem 0.5rem; border-radius: 4px; pointer-events: none; display: flex; align-items: center; gap: 0.3rem; }
+  .panel-image { width: 100%; aspect-ratio: 4/3; overflow: hidden; border-radius: 12px; }
+  .panel-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .panel-card-placeholder { aspect-ratio: 4/3; background: var(--purple-light); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; }
   .panel-card-placeholder i { font-size: 28px; color: var(--purple); opacity: 0.4; }
   .panel-card-placeholder span { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); opacity: 0.6; }
@@ -122,7 +94,6 @@
   .panel-pdf { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.8rem; font-size: 11px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: var(--purple); text-decoration: none; border-bottom: 1px solid #c4b5fd; padding-bottom: 0.1rem; transition: color 0.2s; }
   .panel-pdf:hover { color: var(--purple-dark); }
 
-  /* AUDIO */
   .panel-audio { background: var(--bg); border-radius: 12px; padding: 1.2rem 1.5rem; margin-top: 0.8rem; border: 0.5px solid var(--border); }
   .panel-audio-title { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 0.8rem; }
   .audio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
@@ -130,7 +101,6 @@
   .audio-label { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); }
   .audio-item audio { width: 100%; height: 28px; accent-color: var(--purple); }
 
-  /* CTA */
   .cta-section { padding: 6rem 4rem; background: var(--black); border-top: 0.5px solid var(--border); }
   .cta-inner { display: flex; justify-content: space-between; align-items: center; gap: 4rem; flex-wrap: wrap; }
   .cta-left h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; letter-spacing: -0.04em; color: #fff; line-height: 1.05; }
@@ -139,7 +109,6 @@
   .btn-cta { background: var(--purple); color: #fff; font-size: 13px; font-weight: 500; padding: 0.9rem 2.2rem; border-radius: 10px; text-decoration: none; white-space: nowrap; transition: background 0.2s; }
   .btn-cta:hover { background: var(--purple-mid); }
 
-  /* FOOTER */
   footer { padding: 1.5rem 4rem; background: var(--black); border-top: 0.5px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; }
   footer p { font-size: 12px; color: rgba(255,255,255,0.3); }
   footer a { color: rgba(255,255,255,0.3); text-decoration: none; font-size: 12px; transition: color 0.2s; }
@@ -151,16 +120,9 @@
   .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* LIGHTBOX */
-  .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; align-items: center; justify-content: center; }
-  .lightbox.open { display: flex; }
-  .lightbox-bg { position: absolute; inset: 0; background: rgba(0,0,0,0.92); cursor: zoom-out; }
-  .lightbox-close { position: absolute; top: 1.5rem; right: 1.5rem; z-index: 1001; background: rgba(255,255,255,0.12); border: none; color: #fff; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
-  .lightbox-close:hover { background: rgba(255,255,255,0.22); }
-  .lightbox-img { position: relative; z-index: 1001; max-width: 92vw; max-height: 90vh; object-fit: contain; border-radius: 8px; box-shadow: 0 24px 64px rgba(0,0,0,0.5); }
-
   @media (max-width: 960px) {
     nav { padding: 1rem 2rem; }
+    .nav-links .hide-mobile { display: none; }
     .page-header, .work-section { padding-left: 2rem; padding-right: 2rem; }
     .panel-grid { grid-template-columns: 1fr 1fr; }
     .brand-tags { display: none; }
@@ -186,14 +148,10 @@
   </a>
   <ul class="nav-links">
     <li><a href="index.html#about">about</a></li>
-    <li class="nav-dropdown">
-      <a href="work.html" class="active">work <i class="ti ti-chevron-down" style="font-size:10px;"></i></a>
-      <div class="nav-dropdown-menu">
-        <a href="digital-marketing.html">digital marketing</a>
-        <a href="branding-advertising.html" class="active">brand &amp; advertising</a>
-      </div>
-    </li>
-    <li><a href="index.html#awards">awards</a></li>
+    <li><a href="work.html">work</a></li>
+    <li class="hide-mobile"><a href="digital-marketing.html">digital marketing</a></li>
+    <li><a href="branding-advertising.html" class="active">brand & advertising</a></li>
+    <li class="hide-mobile"><a href="index.html#awards">awards</a></li>
     <li><a href="index.html#contact" class="nav-cta">say hi →</a></li>
   </ul>
 </nav>
@@ -201,22 +159,20 @@
 <div class="page-header">
   <div class="page-header-inner">
     <div class="page-header-pills">
-      <span class="pill pill-amber">brand &amp; advertising</span>
-      <span class="pill pill-gray">tv · radio · digital · 12 brands</span>
+      <span class="pill pill-amber">brand & advertising</span>
+      <span class="pill pill-gray">tv · radio · digital · 13 brands</span>
     </div>
-    <h1 class="page-header-title">brand &amp;<br><span class="muted">advertising.</span></h1>
-    <p class="page-header-sub">tv. radio. digital. twelve years of briefs, ideas, and campaigns that shipped.</p>
+    <h1 class="page-header-title">brand &<br><span class="muted">advertising.</span></h1>
+    <p class="page-header-sub">tv. radio. digital. twelve+ years of briefs, ideas, and campaigns that shipped.</p>
   </div>
 </div>
 
-<div class="work-section">
-  <div class="section-label">Brand &amp; Advertising</div>
-  <h2 class="section-title reveal">Selected Work</h2>
+<div id="brand" class="work-section">
+  <div class="section-label">Selected Work</div>
   <p class="section-sub reveal">click any brand to explore the work.</p>
 
   <div class="brand-list">
-
-    <!-- BOBCARD -->
+<!-- BOBCARD -->
     <div class="brand-item reveal" style="--brand-color: #F26522;">
       <div class="brand-trigger" onclick="toggleBrand(this)">
         <div class="brand-trigger-left"><span class="brand-number">01</span><span class="brand-name">BOBCARD</span></div>
@@ -228,11 +184,8 @@
       <div class="brand-panel">
         <div class="panel-grid">
           <div class="panel-card">
-            <div class="panel-image">
-              <img src="BOBCARD.png" alt="BOBCARD Campaign" onclick="openLightbox(this.src, this.alt)">
-              <div class="panel-image-hint"><i class="ti ti-zoom-in" style="font-size:10px;"></i> view full</div>
-            </div>
-            <div class="panel-info"><strong>BOBCARD Launch Campaign</strong>Social media campaign strategy &amp; creative direction.</div>
+            <div class="panel-image"><img src="BOBCARD.png" alt="BOBCARD Campaign"></div>
+            <div class="panel-info"><strong>BOBCARD Launch Campaign</strong>Social media campaign strategy & creative direction.</div>
           </div>
         </div>
       </div>
@@ -260,7 +213,7 @@
     <!-- L&T REALTY -->
     <div class="brand-item reveal" style="--brand-color: #FFC72C;">
       <div class="brand-trigger" onclick="toggleBrand(this)">
-        <div class="brand-trigger-left"><span class="brand-number">03</span><span class="brand-name">L&amp;T Realty</span></div>
+        <div class="brand-trigger-left"><span class="brand-number">03</span><span class="brand-name">L&T Realty</span></div>
         <div class="brand-trigger-right">
           <div class="brand-tags"><span class="brand-pill">Video Ad</span><span class="brand-pill">Radio</span></div>
           <div class="brand-arrow"><i class="ti ti-chevron-down" aria-hidden="true"></i></div>
@@ -269,8 +222,8 @@
       <div class="brand-panel">
         <div class="panel-grid">
           <div class="panel-card">
-            <div class="panel-video"><iframe src="https://www.youtube.com/embed/naj-2yy1Xj8" title="L&amp;T Realty" frameborder="0" allowfullscreen></iframe></div>
-            <div class="panel-info"><strong>L&amp;T Realty Video Ad</strong>TV/digital film — concept &amp; script.</div>
+            <div class="panel-video"><iframe src="https://www.youtube.com/embed/naj-2yy1Xj8" title="L&T Realty" frameborder="0" allowfullscreen></iframe></div>
+            <div class="panel-info"><strong>L&T Realty Video Ad</strong>TV/digital film — concept & script.</div>
           </div>
         </div>
         <div class="panel-audio">
@@ -296,7 +249,7 @@
         <div class="panel-grid">
           <div class="panel-card">
             <div class="panel-video"><iframe src="https://www.youtube.com/embed/Ne7c_iMTS7Q" title="CompareMunafa" frameborder="0" allowfullscreen></iframe></div>
-            <div class="panel-info"><strong>CompareMunafa Brand Film</strong>Brand campaign — concept, script &amp; direction.</div>
+            <div class="panel-info"><strong>CompareMunafa Brand Film</strong>Brand campaign — concept, script & direction.</div>
           </div>
         </div>
         <div class="panel-audio">
@@ -345,11 +298,11 @@
         <div class="panel-grid">
           <div class="panel-card">
             <div class="panel-video"><iframe src="https://www.youtube.com/embed/YcwgXhtM8CU" title="FS Kashmir AV" frameborder="0" allowfullscreen></iframe></div>
-            <div class="panel-info"><strong>Kashmir AV — Self Made</strong>Script, direction &amp; edit.</div>
+            <div class="panel-info"><strong>Kashmir AV — Self Made</strong>Script, direction & edit.</div>
           </div>
           <div class="panel-card">
             <div class="panel-video"><iframe src="https://www.youtube.com/embed/m1GgB6kr_z0" title="FS Kashmir Video Ad" frameborder="0" allowfullscreen></iframe></div>
-            <div class="panel-info"><strong>Kashmir Video Ad</strong>Brand film — concept &amp; script.</div>
+            <div class="panel-info"><strong>Kashmir Video Ad</strong>Brand film — concept & script.</div>
           </div>
         </div>
         <div class="panel-audio">
@@ -378,7 +331,7 @@
         <div class="panel-grid">
           <div class="panel-card">
             <div class="panel-video"><iframe src="https://www.youtube.com/embed/isADsWDhwn8" title="Snapdeal Pitch AV" frameborder="0" allowfullscreen></iframe></div>
-            <div class="panel-info"><strong>Snapdeal Pitch AV</strong>New business pitch — digital AV concept &amp; script.</div>
+            <div class="panel-info"><strong>Snapdeal Pitch AV</strong>New business pitch — digital AV concept & script.</div>
           </div>
         </div>
       </div>
@@ -397,7 +350,7 @@
         <div class="panel-grid">
           <div class="panel-card">
             <div class="panel-card-placeholder"><i class="ti ti-presentation" aria-hidden="true"></i><span>Upload Cover</span></div>
-            <div class="panel-info"><strong>Reebok Pitch Work</strong>Brand campaign concept &amp; creative direction.<br><a href="reebok.pdf" target="_blank" class="panel-pdf">view presentation →</a></div>
+            <div class="panel-info"><strong>Reebok Pitch Work</strong>Brand campaign concept & creative direction.<br><a href="reebok.pdf" target="_blank" class="panel-pdf">view presentation →</a></div>
           </div>
         </div>
       </div>
@@ -479,10 +432,50 @@
       </div>
     </div>
 
+    <!-- TAJ INNER CIRCLE -->
+    <div class="brand-item reveal" style="--brand-color: #8a6d3b;">
+      <div class="brand-trigger" onclick="toggleBrand(this)">
+        <div class="brand-trigger-left"><span class="brand-number">13</span><span class="brand-name">Taj Inner Circle</span></div>
+        <div class="brand-trigger-right">
+          <div class="brand-tags"><span class="brand-pill">Digital Ads</span><span class="brand-pill">Luxury</span></div>
+          <div class="brand-arrow"><i class="ti ti-chevron-down" aria-hidden="true"></i></div>
+        </div>
+      </div>
+      <div class="brand-panel">
+        <div class="panel-info" style="margin-bottom:1.2rem; padding:1.2rem 1.5rem; background:var(--bg); border-radius:10px;">
+          <strong style="font-size:13px; color:var(--purple); display:block; margin-bottom:0.6rem;">The Idea</strong>
+          <span style="display:block; margin-bottom:0.6rem;"><strong style="color:var(--black);">The Challenge —</strong> Taj Inner Circle needed to grow online registrations, but every extra click between ad and form lost potential members.</span>
+          <span style="display:block; margin-bottom:0.6rem;"><strong style="color:var(--black);">The Idea —</strong> Remove the friction entirely. Let people join without ever leaving the ad.</span>
+          <span style="display:block;"><strong style="color:var(--black);">The Execution —</strong> Built digital ads where users could enter their name and email directly within the creative, collapsing a multi-step funnel into one frictionless tap.</span>
+        </div>
+        <div class="panel-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="panel-card">
+            <div class="panel-image"><img src="taj-rainforest-dinner.png" alt="Taj Inner Circle — Rainforest Dinner"></div>
+            <div class="panel-info"><strong>Rainforest Dinner</strong>In-ad registration — amphitheatre dining.</div>
+          </div>
+          <div class="panel-card">
+            <div class="panel-image"><img src="taj-palanquin-dinner.png" alt="Taj Inner Circle — Palanquin Dinner"></div>
+            <div class="panel-info"><strong>Palanquin Dinner</strong>In-ad registration — beachside dining.</div>
+          </div>
+          <div class="panel-card">
+            <div class="panel-image"><img src="taj-omakase.png" alt="Taj Inner Circle — Omakase"></div>
+            <div class="panel-info"><strong>Omakase Menu</strong>In-ad registration — chef's table.</div>
+          </div>
+          <div class="panel-card">
+            <div class="panel-image"><img src="taj-vineyard.png" alt="Taj Inner Circle — Vineyard"></div>
+            <div class="panel-info"><strong>Private Vineyard</strong>In-ad registration — exclusive access.</div>
+          </div>
+          <div class="panel-card">
+            <div class="panel-image"><img src="taj-scuba-shipwreck.png" alt="Taj Inner Circle — Scuba Shipwreck"></div>
+            <div class="panel-info"><strong>Scuba Shipwreck</strong>In-ad registration — underwater adventure.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
-<!-- CTA -->
 <div class="cta-section">
   <div class="cta-inner">
     <div class="cta-left">
@@ -499,13 +492,6 @@
   <a href="work.html">← back to work</a>
 </footer>
 
-<!-- LIGHTBOX -->
-<div id="lightbox" class="lightbox">
-  <div class="lightbox-bg" onclick="closeLightbox()"></div>
-  <button class="lightbox-close" onclick="closeLightbox()"><i class="ti ti-x"></i></button>
-  <img src="" alt="" class="lightbox-img">
-</div>
-
 <script>
   function toggleBrand(trigger) {
     const item = trigger.closest('.brand-item');
@@ -513,22 +499,6 @@
     document.querySelectorAll('.brand-item.open').forEach(el => el.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
   }
-
-  function openLightbox(src, alt) {
-    const lb = document.getElementById('lightbox');
-    lb.querySelector('.lightbox-img').src = src;
-    lb.querySelector('.lightbox-img').alt = alt || '';
-    lb.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeLightbox();
-  });
-
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
