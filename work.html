@@ -103,7 +103,35 @@
     .hub-tile { min-height: 260px; padding: 2rem; }
     footer { flex-direction: column; gap: 0.8rem; text-align: center; }
   }
+
+  .nav-item-dropdown { position: relative; }
+  .nav-dropdown-trigger { display: flex; align-items: center; gap: 0.3rem; cursor: pointer; font-size: 13px; color: var(--mid); transition: color 0.2s; background: none; border: none; font-family: var(--font); padding: 0; }
+  .nav-dropdown-trigger:hover, .nav-item-dropdown.open .nav-dropdown-trigger { color: var(--black); }
+  .nav-dropdown-trigger i { font-size: 11px; transition: transform 0.2s; }
+  .nav-item-dropdown.open .nav-dropdown-trigger i { transform: rotate(180deg); }
+  .nav-dropdown-menu {
+    position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(-6px);
+    padding-top: 0.8rem;
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.15s, transform 0.15s, visibility 0.15s;
+    z-index: 200;
+  }
+  .nav-item-dropdown.open .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+  .nav-dropdown-menu-inner {
+    background: var(--white); border: 0.5px solid var(--border); border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    min-width: 210px; padding: 0.5rem; position: relative;
+  }
+  .nav-dropdown-menu-inner::before {
+    content: ''; position: absolute; top: -5px; left: 50%; transform: translateX(-50%) rotate(45deg);
+    width: 10px; height: 10px; background: var(--white); border-left: 0.5px solid var(--border); border-top: 0.5px solid var(--border);
+  }
+  .nav-dropdown-link { display: block; padding: 0.7rem 1rem; border-radius: 8px; font-size: 13px; color: var(--black); text-decoration: none; transition: background 0.15s; }
+  .nav-dropdown-link:hover { background: var(--purple-light); color: var(--purple-dark); }
+  .nav-dropdown-link-sub { font-size: 11px; color: var(--mid); margin-top: 0.15rem; display: block; }
+
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
 <body>
 
@@ -114,7 +142,15 @@
   </a>
   <ul class="nav-links">
     <li><a href="index.html#about">about</a></li>
-    <li><a href="work.html" class="active">work</a></li>
+    <li class="nav-item-dropdown" id="workDropdown">
+      <button class="nav-dropdown-trigger" onclick="toggleNavDropdown(event)">work <i class="ti ti-chevron-down" aria-hidden="true"></i></button>
+      <div class="nav-dropdown-menu">
+        <div class="nav-dropdown-menu-inner">
+          <a href="digital-marketing.html" class="nav-dropdown-link">Digital Marketing<span class="nav-dropdown-link-sub">Performance · SEO · ASO</span></a>
+          <a href="branding-advertising.html" class="nav-dropdown-link">Brand & Advertising<span class="nav-dropdown-link-sub">TV · Radio · Film</span></a>
+        </div>
+      </div>
+    </li>
     <li><a href="index.html#awards">awards</a></li>
     <li><a href="index.html#contact" class="nav-cta">say hi →</a></li>
   </ul>
@@ -169,6 +205,19 @@
     });
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
+</script>
+<script>
+  function toggleNavDropdown(e) {
+    e.stopPropagation();
+    const item = document.getElementById('workDropdown');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.nav-item-dropdown.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+  document.addEventListener('click', (e) => {
+    const item = document.getElementById('workDropdown');
+    if (item && !item.contains(e.target)) item.classList.remove('open');
+  });
 </script>
 </body>
 </html>
