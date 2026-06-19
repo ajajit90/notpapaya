@@ -53,6 +53,33 @@
   }
   .nav-cta:hover { background: var(--purple-mid); }
 
+  /* DROPDOWN */
+  .nav-item-dropdown { position: relative; }
+  .nav-dropdown-trigger { display: flex; align-items: center; gap: 0.3rem; cursor: pointer; font-size: 13px; color: var(--mid); transition: color 0.2s; background: none; border: none; font-family: var(--font); padding: 0; }
+  .nav-dropdown-trigger:hover, .nav-item-dropdown.open .nav-dropdown-trigger { color: var(--black); }
+  .nav-dropdown-trigger i { font-size: 11px; transition: transform 0.2s; }
+  .nav-item-dropdown.open .nav-dropdown-trigger i { transform: rotate(180deg); }
+  .nav-dropdown-menu {
+    position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(-6px);
+    padding-top: 0.8rem;
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.15s, transform 0.15s, visibility 0.15s;
+    z-index: 200;
+  }
+  .nav-item-dropdown.open .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+  .nav-dropdown-menu-inner {
+    background: var(--white); border: 0.5px solid var(--border); border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    min-width: 210px; padding: 0.5rem; position: relative;
+  }
+  .nav-dropdown-menu-inner::before {
+    content: ''; position: absolute; top: -5px; left: 50%; transform: translateX(-50%) rotate(45deg);
+    width: 10px; height: 10px; background: var(--white); border-left: 0.5px solid var(--border); border-top: 0.5px solid var(--border);
+  }
+  .nav-dropdown-link { display: block; padding: 0.7rem 1rem; border-radius: 8px; font-size: 13px; color: var(--black); text-decoration: none; transition: background 0.15s; }
+  .nav-dropdown-link:hover { background: var(--purple-light); color: var(--purple-dark); }
+  .nav-dropdown-link-sub { font-size: 11px; color: var(--mid); margin-top: 0.15rem; display: block; }
+
   /* HERO */
   #hero {
     min-height: 100vh; display: grid;
@@ -62,7 +89,6 @@
     position: relative; overflow: hidden;
   }
 
-  /* subtle grid bg */
   #hero::before {
     content: '';
     position: absolute; inset: 0;
@@ -101,8 +127,7 @@
   }
   .hero-image-tag-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s ease-in-out infinite; }
   .hero-image-tag-text { font-size: 12px; font-weight: 500; color: var(--black); }
-  .hero-image-tag-sub { font-size: 10px; color: var(--mid); }
-
+  
   @keyframes fadeIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
 
   /* PILLS */
@@ -196,7 +221,6 @@
   .about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 6rem; align-items: start; margin-top: 2rem; }
   .about-text { font-size: 15px; color: var(--mid); line-height: 1.85; }
   .about-text p { margin-bottom: 1.2rem; }
-  .about-text strong { color: var(--black); font-weight: 500; }
   .about-heading { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 600; letter-spacing: -0.03em; color: var(--black); line-height: 1.1; margin-bottom: 1.5rem; }
 
   .timeline { margin-top: 2rem; }
@@ -205,14 +229,6 @@
   .tl-year { font-size: 11px; color: var(--purple); font-weight: 500; letter-spacing: 0.05em; padding-top: 0.2rem; }
   .tl-role { font-size: 14px; font-weight: 500; color: var(--black); }
   .tl-company { font-size: 12px; color: var(--mid); margin-top: 0.15rem; }
-
-  .about-cards { display: flex; flex-direction: column; gap: 0.5px; background: var(--border); border-radius: 16px; overflow: hidden; }
-  .about-card { padding: 1.8rem; background: var(--white); transition: background 0.2s; }
-  .about-card:hover { background: var(--bg); }
-  .about-card-num { font-size: 2.8rem; font-weight: 600; letter-spacing: -0.04em; color: var(--black); line-height: 1; }
-  .about-card-num.purple { color: var(--purple); }
-  .about-card-num.amber { color: var(--amber); }
-  .about-card-lbl { font-size: 11px; color: var(--mid); margin-top: 0.4rem; letter-spacing: 0.05em; text-transform: uppercase; }
 
   /* EXPERTISE */
   #expertise { padding: 6rem 4rem; border-bottom: 0.5px solid var(--border); }
@@ -227,15 +243,14 @@
     transition: background 0.2s, border-color 0.2s, transform 0.15s;
   }
   .expertise-chip:hover { background: var(--purple-light); border-color: #c4b5fd; color: var(--purple-dark); transform: translateY(-2px); }
-  .expertise-chip:nth-child(3n+1) { background: var(--purple-light); border-color: transparent; color: var(--purple-dark); }
-  .expertise-chip:nth-child(3n+2) { background: var(--amber-light); border-color: transparent; color: var(--amber-dark); }
-  .expertise-chip:nth-child(3n+3) { background: var(--white); }
 
-  /* WORK */
+  /* WORK SECTION */
   #work { padding: 6rem 4rem; border-bottom: 0.5px solid var(--border); }
+  .work-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 0.5rem; }
   .work-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
   .work-tag::before { content: ''; width: 16px; height: 2px; background: var(--purple); border-radius: 2px; }
-  .work-heading { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 600; letter-spacing: -0.03em; color: var(--black); line-height: 1.1; margin-bottom: 0.5rem; }
+  .work-heading { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 600; letter-spacing: -0.03em; color: var(--black); line-height: 1.1; }
+  .view-all-link { font-size: 13px; color: var(--purple); text-decoration: none; font-weight: 500; margin-bottom: 1rem; }
   .work-sub { font-size: 14px; color: var(--mid); margin-bottom: 3rem; }
 
   .work-bento { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -253,136 +268,40 @@
   .work-tile::before {
     content: '';
     position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(10,10,10,0.8) 0%, rgba(10,10,10,0.25) 60%, rgba(10,10,10,0.1) 100%);
+    background: linear-gradient(to top, rgba(10,10,10,0.8) 0%, rgba(10,10,10,0.25) 60%);
     z-index: 0;
   }
   .work-tile > * { position: relative; z-index: 1; }
-  .work-tile-num { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; color: rgba(255,255,255,0.6); }
   .work-tile-label {
     font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
     margin-bottom: 0.5rem; color: #fff;
-    display: inline-block;
-    background: rgba(0,0,0,0.35);
-    backdrop-filter: blur(6px);
-    padding: 0.35rem 0.8rem;
-    border-radius: 100px;
-    width: fit-content;
+    background: rgba(0,0,0,0.35); backdrop-filter: blur(6px);
+    padding: 0.35rem 0.8rem; border-radius: 100px; width: fit-content;
   }
-  .work-tile-title { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,0.5); }
-  .work-tile-arrow { font-size: 13px; font-weight: 500; margin-top: 0.3rem; color: rgba(255,255,255,0.9); text-shadow: 0 1px 6px rgba(0,0,0,0.5); }
+  .work-tile-title { font-size: 1.5rem; font-weight: 600; color: #fff; }
 
-  /* AWARDS */
-  #awards { padding: 6rem 4rem; background: var(--white); border-bottom: 0.5px solid var(--border); }
-  .awards-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
-  .awards-tag::before { content: ''; width: 16px; height: 2px; background: var(--purple); border-radius: 2px; }
-  .awards-heading { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 600; letter-spacing: -0.03em; color: var(--black); line-height: 1.1; margin-bottom: 3rem; }
-  .awards-list { display: flex; flex-direction: column; gap: 0.5px; background: var(--border); border-radius: 16px; overflow: hidden; }
-  .award-row {
-    display: grid; grid-template-columns: 80px 1fr auto;
-    align-items: center; gap: 2rem; padding: 1.8rem 2rem;
-    background: var(--white); transition: background 0.2s;
-  }
-  .award-row:hover { background: var(--purple-light); }
-  .award-year { font-size: 1.4rem; font-weight: 600; letter-spacing: -0.03em; color: var(--purple); }
-  .award-title { font-size: 14px; font-weight: 500; color: var(--black); }
-  .award-org { font-size: 12px; color: var(--mid); margin-top: 0.2rem; }
-  .award-badge {
-    font-size: 10px; font-weight: 500; letter-spacing: 0.05em;
-    padding: 0.3rem 0.8rem; border-radius: 100px;
-  }
-  .badge-gold { background: #fef3c7; color: #92400e; }
-  .badge-current { background: var(--green-light); color: #065f46; }
-  .badge-agency { background: var(--purple-light); color: var(--purple-mid); }
+  /* CONTACT & AWARDS (Standard styling) */
+  #contact { padding: 6rem 4rem; background: var(--black); }
+  .contact-heading { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 600; color: #fff; margin-bottom: 1.5rem; }
+  .btn-white { background: #fff; color: var(--black); padding: 0.85rem 2rem; border-radius: 10px; text-decoration: none; font-size: 13px; font-weight: 500; }
 
-  /* CONTACT */
-  #contact { padding: 6rem 4rem; border-bottom: 0.5px solid var(--border); background: var(--black); }
-  .contact-inner { max-width: 700px; }
-  .contact-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.6rem; }
-  .contact-tag::before { content: ''; width: 16px; height: 2px; background: var(--purple); border-radius: 2px; }
-  .contact-heading { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 600; letter-spacing: -0.04em; line-height: 0.95; color: #fff; margin-bottom: 1.5rem; }
-  .contact-heading em { color: var(--purple); font-style: normal; }
-  .contact-sub { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 2.5rem; }
-  .contact-links { display: flex; gap: 0.8rem; flex-wrap: wrap; }
-  .btn-white {
-    background: #fff; color: var(--black);
-    font-size: 13px; font-weight: 500;
-    padding: 0.85rem 2rem; border-radius: 10px;
-    text-decoration: none; transition: background 0.2s;
-  }
-  .btn-white:hover { background: var(--purple-light); }
-  .btn-outline-white {
-    background: transparent; color: #fff;
-    font-size: 13px; font-weight: 500;
-    padding: 0.85rem 2rem; border-radius: 10px;
-    border: 0.5px solid rgba(255,255,255,0.2);
-    text-decoration: none; transition: border-color 0.2s;
-  }
-  .btn-outline-white:hover { border-color: rgba(255,255,255,0.5); }
-
-  /* FOOTER */
   footer {
     padding: 1.5rem 4rem; background: var(--black);
     border-top: 0.5px solid rgba(255,255,255,0.08);
     display: flex; justify-content: space-between; align-items: center;
   }
   footer p { font-size: 12px; color: rgba(255,255,255,0.3); }
-  .footer-brand { display: flex; align-items: center; gap: 0.5rem; }
-  .footer-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--purple); opacity: 0.5; }
-  .footer-name { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.4); }
 
-  /* ANIMATIONS */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* RESPONSIVE */
   @media (max-width: 960px) {
     nav { padding: 1rem 2rem; }
-    #hero, #about, #work, #awards, #contact { padding: 5rem 2rem; }
-    #hero { padding-top: 7rem; grid-template-columns: 1fr; gap: 2.5rem; }
-    .hero-image-wrap { order: -1; }
-    .hero-image-frame { max-width: 280px; }
-    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .stats-strip { grid-template-columns: 1fr 1fr; }
-    footer { padding: 1.5rem 2rem; }
-  }
-  @media (max-width: 600px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links .hide-mobile { display: none; }
-    #hero, #about, #work, #awards, #contact { padding: 4rem 1.5rem; }
-    #hero { padding-top: 6rem; }
+    #hero, #about, #work, #expertise, #contact { padding: 5rem 2rem; }
+    #hero { grid-template-columns: 1fr; }
     .work-bento { grid-template-columns: 1fr; }
-    .award-row { grid-template-columns: 60px 1fr; }
-    .award-badge { display: none; }
-    footer { flex-direction: column; gap: 0.8rem; text-align: center; }
   }
-
-  .nav-item-dropdown { position: relative; }
-  .nav-dropdown-trigger { display: flex; align-items: center; gap: 0.3rem; cursor: pointer; font-size: 13px; color: var(--mid); transition: color 0.2s; background: none; border: none; font-family: var(--font); padding: 0; }
-  .nav-dropdown-trigger:hover, .nav-item-dropdown.open .nav-dropdown-trigger { color: var(--black); }
-  .nav-dropdown-trigger i { font-size: 11px; transition: transform 0.2s; }
-  .nav-item-dropdown.open .nav-dropdown-trigger i { transform: rotate(180deg); }
-  .nav-dropdown-menu {
-    position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(-6px);
-    padding-top: 0.8rem;
-    opacity: 0; visibility: hidden;
-    transition: opacity 0.15s, transform 0.15s, visibility 0.15s;
-    z-index: 200;
-  }
-  .nav-item-dropdown.open .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-  .nav-dropdown-menu-inner {
-    background: var(--white); border: 0.5px solid var(--border); border-radius: 12px;
-    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
-    min-width: 210px; padding: 0.5rem; position: relative;
-  }
-  .nav-dropdown-menu-inner::before {
-    content: ''; position: absolute; top: -5px; left: 50%; transform: translateX(-50%) rotate(45deg);
-    width: 10px; height: 10px; background: var(--white); border-left: 0.5px solid var(--border); border-top: 0.5px solid var(--border);
-  }
-  .nav-dropdown-link { display: block; padding: 0.7rem 1rem; border-radius: 8px; font-size: 13px; color: var(--black); text-decoration: none; transition: background 0.15s; }
-  .nav-dropdown-link:hover { background: var(--purple-light); color: var(--purple-dark); }
-  .nav-dropdown-link-sub { font-size: 11px; color: var(--mid); margin-top: 0.15rem; display: block; }
-
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
@@ -399,12 +318,12 @@
       <button class="nav-dropdown-trigger" onclick="toggleNavDropdown(event)">work <i class="ti ti-chevron-down" aria-hidden="true"></i></button>
       <div class="nav-dropdown-menu">
         <div class="nav-dropdown-menu-inner">
-          <a href="digital-marketing.html" class="nav-dropdown-link">Digital Marketing<span class="nav-dropdown-link-sub">Performance · SEO · ASO</span></a>
-          <a href="branding-advertising.html" class="nav-dropdown-link">Brand & Advertising<span class="nav-dropdown-link-sub">TV · Radio · Film</span></a>
+          <a href="work.html" class="nav-dropdown-link" style="border-bottom: 0.5px solid var(--border); margin-bottom: 5px; font-weight: 600;">View All Work ↗</a>
+          <a href="digital-marketing.html" class="nav-dropdown-link">Digital Marketing<span class="nav-dropdown-link-sub">Performance · SEO</span></a>
+          <a href="branding-advertising.html" class="nav-dropdown-link">Brand & Advertising<span class="nav-dropdown-link-sub">TV · Film · Print</span></a>
         </div>
       </div>
     </li>
-    <li class="hide-mobile"><a href="#awards">awards</a></li>
     <li><a href="#contact" class="nav-cta">say hi →</a></li>
   </ul>
 </nav>
@@ -413,8 +332,6 @@
   <div class="hero-inner">
     <div class="hero-pills">
       <span class="pill pill-purple">12+ yrs experience</span>
-      <span class="pill pill-green">gold cmo asia award</span>
-      <span class="pill pill-amber">scarecrow · leo burnett · rediffusion</span>
       <span class="pill pill-gray">noida, india</span>
     </div>
     <h1 class="hero-headline">
@@ -422,193 +339,50 @@
       <span class="highlight">impossible</span>
       <span class="muted"> to ignore.</span>
     </h1>
-    <p class="hero-sub">
-      tv spots → reels → search ads → marcom leadership.<br>
-      one brain. <strong>many mediums. real results.</strong>
-    </p>
+    <p class="hero-sub">one brain. <strong>many mediums. real results.</strong></p>
     <div class="hero-cta">
       <a href="work.html" class="btn-primary">view work ↗</a>
       <a href="#contact" class="btn-secondary">get in touch</a>
-      <div class="hero-availability">
-        <div class="avail-dot"></div>
-        open to opportunities
-      </div>
     </div>
   </div>
   <div class="hero-image-wrap">
     <div class="hero-image-frame">
       <img src="Ajit Cover Image.png" alt="Ajit Kumar">
-      <div class="hero-image-tag">
-        <div class="hero-image-tag-dot"></div>
-        <div>
-          <div class="hero-image-tag-text">Ajit Kumar</div>
-          <div class="hero-image-tag-text">Storyteller. Strategist. Leader.</div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
-
-<div class="stats-strip">
-  <div class="stat-box reveal">
-    <div class="stat-val purple">12+</div>
-    <div class="stat-lbl">years in advertising & marketing</div>
-  </div>
-  <div class="stat-box reveal">
-    <div class="stat-val">3</div>
-    <div class="stat-lbl">top-tier creative agencies</div>
-  </div>
-  <div class="stat-box reveal">
-    <div class="stat-val">01</div>
-    <div class="stat-lbl">gold cmo asia award</div>
-  </div>
-  <div class="stat-box reveal">
-    <div class="stat-val">tv →</div>
-    <div class="stat-lbl">to full-funnel digital</div>
-  </div>
-</div>
 
 <section id="work">
   <div class="work-tag">Work</div>
-  <h2 class="work-heading reveal">what i've made.</h2>
+  <div class="work-header">
+    <h2 class="work-heading reveal">what i've made.</h2>
+    <a href="work.html" class="view-all-link reveal">view all work →</a>
+  </div>
   <p class="work-sub reveal">pick a world.</p>
   <div class="work-bento reveal">
     <a href="digital-marketing.html" class="work-tile work-tile-digital">
-      <div class="work-tile-num">01</div>
-      <div>
-        <div class="work-tile-label">performance · seo · branding · aso</div>
-        <div class="work-tile-title">Digital<br>Marketing</div>
-        <div class="work-tile-arrow">explore →</div>
-      </div>
+      <div class="work-tile-label">performance · seo</div>
+      <div class="work-tile-title">Digital Marketing</div>
     </a>
     <a href="branding-advertising.html" class="work-tile work-tile-brand">
-      <div class="work-tile-num">02</div>
-      <div>
-        <div class="work-tile-label">tv · radio · film · print · pitch</div>
-        <div class="work-tile-title">Brand &<br>Advertising</div>
-        <div class="work-tile-arrow">explore →</div>
-      </div>
+      <div class="work-tile-label">tv · advertising</div>
+      <div class="work-tile-title">Brand & Advertising</div>
     </a>
-  </div>
-</section>
-
-<section id="expertise">
-  <div class="expertise-tag">Expertise</div>
-  <h2 class="expertise-heading reveal">where i add value.</h2>
-  <div class="expertise-grid reveal">
-    <span class="expertise-chip">Brand Strategy & Repositioning</span>
-    <span class="expertise-chip">Integrated Campaign Management</span>
-    <span class="expertise-chip">BFSI & FinTech Marketing</span>
-    <span class="expertise-chip">Content Team Leadership</span>
-    <span class="expertise-chip">Performance Marketing Content</span>
-    <span class="expertise-chip">Social Media & ORM</span>
-    <span class="expertise-chip">ASO & SEO</span>
-    <span class="expertise-chip">AI-Powered Content Operations</span>
-    <span class="expertise-chip">Client & Stakeholder Management</span>
-    <span class="expertise-chip">Creative Writing</span>
-  </div>
-</section>
-
-<section id="about">
-  <div class="about-tag">About</div>
-  <div class="about-grid">
-    <div class="about-text reveal">
-      <h2 class="about-heading">the arc,<br>not just the résumé.</h2>
-      <p>started in advertising when ideas lived on paper and played out on tv. wrote scripts that aired nationally, pitched campaigns that won awards, built brands from a blank brief at some of india's best agencies.</p>
-      <p>over the last seven years, moved into digital — not as a pivot, but as an <strong>expansion</strong>. performance marketing, content strategy, seo, social — learned them the way i learned copywriting: by doing the work.</p>
-      <p>today leading marcom at <strong>intelegencia digital</strong> — managing strategy, teams, and client accounts across india, the us, and the philippines.</p>
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-year">2018 – now</div>
-          <div>
-            <div class="tl-role">Head of MARCOM</div>
-            <div class="tl-company">Intelegencia Digital · Noida</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-year">agency years</div>
-          <div>
-            <div class="tl-role">Senior Writer / Copywriter</div>
-            <div class="tl-company">Scarecrow M&C Saatchi · Leo Burnett · Rediffusion Y&R</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="about-cards reveal">
-      <div class="about-card">
-        <div class="about-card-num purple">12+</div>
-        <div class="about-card-lbl">years of experience</div>
-      </div>
-      <div class="about-card">
-        <div class="about-card-num">3</div>
-        <div class="about-card-lbl">top creative agencies</div>
-      </div>
-      <div class="about-card">
-        <div class="about-card-num amber">gold</div>
-        <div class="about-card-lbl">cmo asia award</div>
-      </div>
-      <div class="about-card">
-        <div class="about-card-num">4</div>
-        <div class="about-card-lbl">direct reports managed</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="awards">
-  <div class="awards-tag">Recognition</div>
-  <h2 class="awards-heading reveal">awards &<br>credentials.</h2>
-  <div class="awards-list reveal">
-    <div class="award-row">
-      <div class="award-year">2023</div>
-      <div>
-        <div class="award-title">Gold Award — Best Digital Campaign</div>
-        <div class="award-org">CMO Asia Awards · Policybazaar</div>
-      </div>
-      <div class="award-badge badge-gold">gold</div>
-    </div>
-    <div class="award-row">
-      <div class="award-year">now</div>
-      <div>
-        <div class="award-title">Head of Marketing Communications</div>
-        <div class="award-org">Intelegencia Digital · Noida / New York / Philippines</div>
-      </div>
-      <div class="award-badge badge-current">current</div>
-    </div>
-    <div class="award-row">
-      <div class="award-year">—</div>
-      <div>
-        <div class="award-title">Senior Writer · TV, Digital, Radio</div>
-        <div class="award-org">Scarecrow M&C Saatchi · Leo Burnett · Rediffusion Y&R</div>
-      </div>
-      <div class="award-badge badge-agency">agency</div>
-    </div>
   </div>
 </section>
 
 <section id="contact">
-  <div class="contact-inner">
-    <div class="contact-tag">Contact</div>
-    <h2 class="contact-heading reveal">got a<br><em>brief?</em></h2>
-    <p class="contact-sub reveal">open to senior roles, consulting engagements, and interesting briefs. based in greater noida — available globally.</p>
-    <div class="contact-links reveal">
-      <a href="mailto:your@email.com" class="btn-white">send an email</a>
-      <a href="https://www.linkedin.com/in/ajajit" target="_blank" class="btn-outline-white">linkedin ↗</a>
-      <a href="https://www.behance.net/ajajit" target="_blank" class="btn-outline-white">behance ↗</a>
-    </div>
-  </div>
+  <h2 class="contact-heading reveal">got a<br><em>brief?</em></h2>
+  <a href="mailto:your@email.com" class="btn-white">send an email</a>
 </section>
 
 <footer>
   <p>© 2026 ajit kumar</p>
-  <div class="footer-brand">
-    <div class="footer-dot"></div>
-    <span class="footer-name">notpapaya</span>
-  </div>
   <p>greater noida, india</p>
 </footer>
 
 <script>
+  // Animation Observer
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
@@ -619,18 +393,15 @@
     });
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
-</script>
-<script>
+
+  // Dropdown Logic
   function toggleNavDropdown(e) {
     e.stopPropagation();
     const item = document.getElementById('workDropdown');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.nav-item-dropdown.open').forEach(el => el.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
+    item.classList.toggle('open');
   }
-  document.addEventListener('click', (e) => {
-    const item = document.getElementById('workDropdown');
-    if (item && !item.contains(e.target)) item.classList.remove('open');
+  document.addEventListener('click', () => {
+    document.getElementById('workDropdown').classList.remove('open');
   });
 </script>
 </body>
