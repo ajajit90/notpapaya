@@ -80,6 +80,30 @@
   .hub-tile-title { font-size: 2.2rem; font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,0.5); }
   .hub-tile-arrow { font-size: 14px; font-weight: 500; margin-top: 0.6rem; color: rgba(255,255,255,0.9); text-shadow: 0 1px 6px rgba(0,0,0,0.5); }
 
+  /* PHILOSOPHY */
+  #philosophy { padding: 6rem 4rem; background: var(--black); }
+  .philosophy-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.6rem; }
+  .philosophy-tag::before { content: ''; width: 16px; height: 2px; background: var(--purple); border-radius: 2px; }
+  .philosophy-quote { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 500; line-height: 1.35; color: #fff; max-width: 760px; letter-spacing: -0.01em; }
+  .philosophy-quote em { color: #a78bfa; font-style: normal; }
+  .philosophy-by { margin-top: 2rem; font-size: 13px; color: rgba(255,255,255,0.4); display: flex; align-items: center; gap: 0.6rem; }
+  .philosophy-by-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--purple); }
+
+  /* TESTIMONIALS */
+  #testimonials { padding: 6rem 4rem; background: var(--white); border-bottom: 0.5px solid var(--border); }
+  .testimonials-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
+  .testimonials-tag::before { content: ''; width: 16px; height: 2px; background: var(--purple); border-radius: 2px; }
+  .testimonials-heading { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 600; letter-spacing: -0.03em; color: var(--black); margin-bottom: 2.5rem; line-height: 1.1; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .testimonial-card { background: var(--white); border: 0.5px solid var(--border); border-radius: 14px; padding: 1.8rem; transition: transform 0.2s, box-shadow 0.2s; }
+  .testimonial-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,0.06); }
+  .testimonial-mark { font-size: 28px; color: var(--purple); opacity: 0.3; line-height: 1; margin-bottom: 0.8rem; font-family: Georgia, serif; }
+  .testimonial-text { font-size: 13px; color: var(--mid); line-height: 1.7; margin-bottom: 1.5rem; }
+  .testimonial-author { display: flex; align-items: center; gap: 0.6rem; }
+  .testimonial-avatar { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; flex-shrink: 0; }
+  .testimonial-name { font-size: 12px; font-weight: 500; color: var(--black); }
+  .testimonial-role { font-size: 11px; color: var(--mid); }
+
   footer { padding: 1.5rem 4rem; background: var(--black); border-top: 0.5px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; }
   footer p { font-size: 12px; color: rgba(255,255,255,0.3); }
   footer a { color: rgba(255,255,255,0.3); text-decoration: none; font-size: 12px; transition: color 0.2s; }
@@ -93,13 +117,14 @@
 
   @media (max-width: 960px) {
     nav { padding: 1rem 2rem; }
-    .page-header, .work-section { padding-left: 2rem; padding-right: 2rem; }
+    .page-header, .work-section, #philosophy, #testimonials { padding-left: 2rem; padding-right: 2rem; }
     .hub-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
     footer { padding: 1.5rem 2rem; }
   }
   @media (max-width: 600px) {
     nav { padding: 1rem 1.5rem; }
-    .page-header, .work-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .page-header, .work-section, #philosophy, #testimonials { padding-left: 1.5rem; padding-right: 1.5rem; }
     .hub-tile { min-height: 260px; padding: 2rem; }
     footer { flex-direction: column; gap: 0.8rem; text-align: center; }
   }
@@ -168,6 +193,12 @@
   </div>
 </div>
 
+<section id="philosophy">
+  <div class="philosophy-tag">Philosophy</div>
+  <div class="philosophy-quote reveal">"every brief is a story waiting for the right teller. i've spent twelve years learning that the channel changes — tv, search, an app store review — but the discipline doesn't: <em>know the audience better than they know themselves, then say the one true thing.</em>"</div>
+  <div class="philosophy-by"><div class="philosophy-by-dot"></div>ajit kumar</div>
+</section>
+
 <div class="work-section">
   <div class="section-label">Pick a World</div>
   <p class="section-sub reveal">two sides of the same craft.</p>
@@ -187,6 +218,46 @@
     </a>
   </div>
 </div>
+
+<section id="testimonials">
+  <div class="testimonials-tag">What People Say</div>
+  <h2 class="testimonials-heading reveal">in their words.</h2>
+  <div class="testimonials-grid reveal">
+    <div class="testimonial-card">
+      <div class="testimonial-mark">"</div>
+      <p class="testimonial-text">[Placeholder] Ajit has a rare ability to translate brand strategy into campaigns that actually move numbers. One of the sharpest minds I've worked with.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar" style="background: var(--purple-light); color: var(--purple-mid);">XY</div>
+        <div>
+          <div class="testimonial-name">[Name placeholder]</div>
+          <div class="testimonial-role">[Title, Company]</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-mark">"</div>
+      <p class="testimonial-text">[Placeholder] Calm under pressure, sharp with data, and always two steps ahead on strategy. Ajit elevated our entire marketing function.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar" style="background: var(--amber-light); color: var(--amber);">AB</div>
+        <div>
+          <div class="testimonial-name">[Name placeholder]</div>
+          <div class="testimonial-role">[Title, Company]</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-mark">"</div>
+      <p class="testimonial-text">[Placeholder] Few people can write a script and read a performance dashboard with equal fluency. That's what makes Ajit valuable.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar" style="background: #ecfdf5; color: #059669;">CD</div>
+        <div>
+          <div class="testimonial-name">[Name placeholder]</div>
+          <div class="testimonial-role">[Title, Company]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer>
   <p>© 2026 ajit kumar</p>
